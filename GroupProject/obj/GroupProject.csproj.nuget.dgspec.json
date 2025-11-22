@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Santiago uwu\\Desktop\\Project AWP\\GroupProject\\GroupProject.csproj": {}
+    "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\GroupProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Santiago uwu\\Desktop\\Project AWP\\GroupProject\\GroupProject.csproj": {
+    "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\GroupProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Santiago uwu\\Desktop\\Project AWP\\GroupProject\\GroupProject.csproj",
+        "projectUniqueName": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\GroupProject.csproj",
         "projectName": "GroupProject",
-        "projectPath": "C:\\Users\\Santiago uwu\\Desktop\\Project AWP\\GroupProject\\GroupProject.csproj",
+        "projectPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\GroupProject.csproj",
         "packagesPath": "C:\\Users\\Santiago uwu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Santiago uwu\\Desktop\\Project AWP\\GroupProject\\obj\\",
+        "outputPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

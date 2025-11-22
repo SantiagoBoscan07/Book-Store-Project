@@ -8,9 +8,12 @@ namespace GroupProject
         public frmMainMenu()
         {
             InitializeComponent();
-            this.Load += frmMainMenu_Load;
+
+            // Testing database connection and retrieving table names
+            // this.Load += frmMainMenu_Load;
         }
 
+        // Test method to connect to the database and list table names
         public void frmMainMenu_Load(object sender, EventArgs e)
         {
             string connString = ConfigurationManager
@@ -44,6 +47,12 @@ namespace GroupProject
             {
                 lblInfo.Text = "Error: " + ex.Message;
             }
+        }
+
+        // Event handler for exit button click, closes the application.
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
