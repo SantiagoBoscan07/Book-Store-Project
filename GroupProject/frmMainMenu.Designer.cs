@@ -54,6 +54,7 @@
             btnTitlesMaintenance.TabIndex = 1;
             btnTitlesMaintenance.Text = "Titles";
             btnTitlesMaintenance.UseVisualStyleBackColor = true;
+            btnTitlesMaintenance.Click += btnTitlesMaintenance_Click;
             // 
             // lblMaintenance
             // 
