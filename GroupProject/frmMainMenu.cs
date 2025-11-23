@@ -43,5 +43,12 @@ namespace GroupProject
             frmStoresMaintenance storeMaintenanceForm = new frmStoresMaintenance();
             storeMaintenanceForm.ShowDialog();
         }
+
+        // Event handler for Employees Maintenance button click, opens the Employees Maintenance form.
+        private void btnEmployeesMaintenance_Click(object sender, EventArgs e)
+        {
+            frmEmployeesMaintenance employeesMaintenanceForm = new frmEmployeesMaintenance();
+            employeesMaintenanceForm.ShowDialog();
+        }
     }
 }

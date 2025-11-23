@@ -101,12 +101,15 @@ namespace GroupProject
             // Clear all textboxes
             txtNote.Clear();
             txtPrice.Clear();
-            txtPubID.Clear();
             txtTitle.Clear();
             txtTitleID.Clear();
 
             // Clear selection of combox box (back to default "Undefined" value)
+            cboTitlesPubID.SelectedIndex = -1;
             cboType.SelectedIndex = 0;
+
+            // Clear date picker (set to current date)
+            dtpPubDate.Value = DateTime.Now;
         }
     }
 }

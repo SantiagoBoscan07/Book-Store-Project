@@ -103,6 +103,7 @@
             btnEmployeesMaintenance.TabIndex = 6;
             btnEmployeesMaintenance.Text = "Employees";
             btnEmployeesMaintenance.UseVisualStyleBackColor = true;
+            btnEmployeesMaintenance.Click += btnEmployeesMaintenance_Click;
             // 
             // btnShoppingCart
             // 

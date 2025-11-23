@@ -37,7 +37,6 @@
             txtTitle = new TextBox();
             lblType = new Label();
             lblPrice = new Label();
-            txtPubID = new TextBox();
             lblPubID = new Label();
             btnAdd = new Button();
             btnUpdate = new Button();
@@ -49,7 +48,8 @@
             lblNote = new Label();
             txtNote = new TextBox();
             lblPublicationDate = new Label();
-            txtPubDate = new DateTimePicker();
+            dtpPubDate = new DateTimePicker();
+            cboTitlesPubID = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)grdTitles).BeginInit();
             SuspendLayout();
             // 
@@ -130,14 +130,6 @@
             lblPrice.Size = new Size(36, 15);
             lblPrice.TabIndex = 9;
             lblPrice.Text = "Price:";
-            // 
-            // txtPubID
-            // 
-            txtPubID.Location = new Point(541, 191);
-            txtPubID.MaxLength = 4;
-            txtPubID.Name = "txtPubID";
-            txtPubID.Size = new Size(147, 23);
-            txtPubID.TabIndex = 11;
             // 
             // lblPubID
             // 
@@ -241,19 +233,30 @@
             lblPublicationDate.TabIndex = 22;
             lblPublicationDate.Text = "Pub Date:";
             // 
-            // txtPubDate
+            // dtpPubDate
             // 
-            txtPubDate.Location = new Point(541, 230);
-            txtPubDate.Name = "txtPubDate";
-            txtPubDate.Size = new Size(147, 23);
-            txtPubDate.TabIndex = 23;
+            dtpPubDate.Location = new Point(541, 230);
+            dtpPubDate.Name = "dtpPubDate";
+            dtpPubDate.Size = new Size(147, 23);
+            dtpPubDate.TabIndex = 23;
+            // 
+            // cboTitlesPubID
+            // 
+            cboTitlesPubID.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTitlesPubID.FormattingEnabled = true;
+            cboTitlesPubID.Items.AddRange(new object[] { "9952", "0736", "0877", "1389", "1622", "1756", "9901", "9952", "9999" });
+            cboTitlesPubID.Location = new Point(541, 194);
+            cboTitlesPubID.Name = "cboTitlesPubID";
+            cboTitlesPubID.Size = new Size(147, 23);
+            cboTitlesPubID.TabIndex = 57;
             // 
             // frmTitlesMaintenance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(715, 366);
-            Controls.Add(txtPubDate);
+            Controls.Add(cboTitlesPubID);
+            Controls.Add(dtpPubDate);
             Controls.Add(lblPublicationDate);
             Controls.Add(txtNote);
             Controls.Add(lblNote);
@@ -265,7 +268,6 @@
             Controls.Add(btnUpdate);
             Controls.Add(btnAdd);
             Controls.Add(lblPubID);
-            Controls.Add(txtPubID);
             Controls.Add(lblPrice);
             Controls.Add(lblType);
             Controls.Add(txtTitle);
@@ -295,7 +297,6 @@
         private TextBox txtTitle;
         private Label lblType;
         private Label lblPrice;
-        private TextBox txtPubID;
         private Label lblPubID;
         private Button btnAdd;
         private Button btnUpdate;
@@ -307,6 +308,7 @@
         private Label lblNote;
         private TextBox txtNote;
         private Label lblPublicationDate;
-        private DateTimePicker txtPubDate;
+        private DateTimePicker dtpPubDate;
+        private ComboBox cboTitlesPubID;
     }
 }
