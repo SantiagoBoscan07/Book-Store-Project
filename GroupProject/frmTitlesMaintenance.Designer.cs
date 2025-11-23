@@ -48,6 +48,8 @@
             txtPrice = new TextBox();
             lblNote = new Label();
             txtNote = new TextBox();
+            lblPublicationDate = new Label();
+            txtPubDate = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)grdTitles).BeginInit();
             SuspendLayout();
             // 
@@ -148,7 +150,7 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(468, 273);
+            btnAdd.Location = new Point(468, 303);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(75, 23);
             btnAdd.TabIndex = 13;
@@ -158,7 +160,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(551, 273);
+            btnUpdate.Location = new Point(551, 303);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 23);
             btnUpdate.TabIndex = 14;
@@ -168,7 +170,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(632, 273);
+            btnDelete.Location = new Point(632, 303);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 23);
             btnDelete.TabIndex = 15;
@@ -177,7 +179,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(551, 302);
+            btnClear.Location = new Point(551, 332);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(75, 23);
             btnClear.TabIndex = 16;
@@ -187,7 +189,7 @@
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(632, 302);
+            btnClose.Location = new Point(632, 332);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(75, 23);
             btnClose.TabIndex = 17;
@@ -216,7 +218,7 @@
             // lblNote
             // 
             lblNote.AutoSize = true;
-            lblNote.Location = new Point(501, 235);
+            lblNote.Location = new Point(499, 268);
             lblNote.Name = "lblNote";
             lblNote.Size = new Size(36, 15);
             lblNote.TabIndex = 20;
@@ -224,17 +226,35 @@
             // 
             // txtNote
             // 
-            txtNote.Location = new Point(541, 232);
+            txtNote.Location = new Point(541, 265);
             txtNote.MaxLength = 200;
             txtNote.Name = "txtNote";
             txtNote.Size = new Size(147, 23);
             txtNote.TabIndex = 21;
             // 
+            // lblPublicationDate
+            // 
+            lblPublicationDate.AutoSize = true;
+            lblPublicationDate.Location = new Point(477, 236);
+            lblPublicationDate.Name = "lblPublicationDate";
+            lblPublicationDate.Size = new Size(58, 15);
+            lblPublicationDate.TabIndex = 22;
+            lblPublicationDate.Text = "Pub Date:";
+            // 
+            // txtPubDate
+            // 
+            txtPubDate.Location = new Point(541, 230);
+            txtPubDate.Name = "txtPubDate";
+            txtPubDate.Size = new Size(147, 23);
+            txtPubDate.TabIndex = 23;
+            // 
             // frmTitlesMaintenance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(715, 337);
+            ClientSize = new Size(715, 366);
+            Controls.Add(txtPubDate);
+            Controls.Add(lblPublicationDate);
             Controls.Add(txtNote);
             Controls.Add(lblNote);
             Controls.Add(txtPrice);
@@ -286,5 +306,7 @@
         private TextBox txtPrice;
         private Label lblNote;
         private TextBox txtNote;
+        private Label lblPublicationDate;
+        private DateTimePicker txtPubDate;
     }
 }

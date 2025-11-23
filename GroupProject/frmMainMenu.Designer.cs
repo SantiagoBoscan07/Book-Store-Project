@@ -83,6 +83,7 @@
             btnPublishersMaintenance.TabIndex = 4;
             btnPublishersMaintenance.Text = "Publishers";
             btnPublishersMaintenance.UseVisualStyleBackColor = true;
+            btnPublishersMaintenance.Click += btnPublishersMaintenance_Click;
             // 
             // btnStoresMaintenance
             // 

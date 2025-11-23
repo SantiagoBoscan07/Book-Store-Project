@@ -71,7 +71,7 @@ namespace GroupProject
             if (isValidInput())
             {
                 // Proceed with add operation
-                MessageBox.Show("Input is valid. Proceeding with update operation.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Input is valid. Proceeding with add operation.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
