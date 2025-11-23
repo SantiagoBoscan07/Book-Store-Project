@@ -94,5 +94,19 @@ namespace GroupProject
                 MessageBox.Show("Input is valid. Proceeding with update operation.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        // Event handler to clear all input fields.
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            // Clear all textboxes
+            txtNote.Clear();
+            txtPrice.Clear();
+            txtPubID.Clear();
+            txtTitle.Clear();
+            txtTitleID.Clear();
+
+            // Clear selection of combox box (back to default "Undefined" value)
+            cboType.SelectedIndex = 0;
+        }
     }
 }

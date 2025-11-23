@@ -73,6 +73,7 @@
             btnAuthorsMaintenance.TabIndex = 3;
             btnAuthorsMaintenance.Text = "Authors";
             btnAuthorsMaintenance.UseVisualStyleBackColor = true;
+            btnAuthorsMaintenance.Click += btnAuthorsMaintenance_Click;
             // 
             // btnPublishersMaintenance
             // 

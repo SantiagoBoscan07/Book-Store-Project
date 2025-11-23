@@ -130,3 +130,4 @@ C:\Users\Santiago uwu\Desktop\BookStore Project\GroupProject\obj\Debug\net8.0-wi
 C:\Users\Santiago uwu\Desktop\BookStore Project\GroupProject\obj\Debug\net8.0-windows\GroupProject.genruntimeconfig.cache
 C:\Users\Santiago uwu\Desktop\BookStore Project\GroupProject\obj\Debug\net8.0-windows\ref\GroupProject.dll
 C:\Users\Santiago uwu\Desktop\BookStore Project\GroupProject\obj\Debug\net8.0-windows\GroupProject.frmTitlesMaintenance.resources
+C:\Users\Santiago uwu\Desktop\BookStore Project\GroupProject\obj\Debug\net8.0-windows\GroupProject.frmAuthorMaintenance.resources
