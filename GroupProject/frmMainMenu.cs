@@ -36,5 +36,12 @@ namespace GroupProject
             frmPublishersMaintenance publishersMaintenanceForm = new frmPublishersMaintenance();
             publishersMaintenanceForm.ShowDialog();
         }
+
+        // Event handler for Stores Maintenance button click, opens the Stores Maintenance form.
+        private void btnStoresMaintenance_Click(object sender, EventArgs e)
+        {
+            frmStoresMaintenance storeMaintenanceForm = new frmStoresMaintenance();
+            storeMaintenanceForm.ShowDialog();
+        }
     }
 }

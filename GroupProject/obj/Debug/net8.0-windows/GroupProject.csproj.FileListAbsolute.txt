@@ -132,3 +132,4 @@ C:\Users\Santiago uwu\Desktop\BookStore Project\GroupProject\obj\Debug\net8.0-wi
 C:\Users\Santiago uwu\Desktop\BookStore Project\GroupProject\obj\Debug\net8.0-windows\GroupProject.frmTitlesMaintenance.resources
 C:\Users\Santiago uwu\Desktop\BookStore Project\GroupProject\obj\Debug\net8.0-windows\GroupProject.frmAuthorMaintenance.resources
 C:\Users\Santiago uwu\Desktop\BookStore Project\GroupProject\obj\Debug\net8.0-windows\GroupProject.frmPublishersMaintenance.resources
+C:\Users\Santiago uwu\Desktop\BookStore Project\GroupProject\obj\Debug\net8.0-windows\GroupProject.frmStoresMaintenance.resources
