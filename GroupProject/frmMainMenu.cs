@@ -57,5 +57,11 @@ namespace GroupProject
             frmReports reportsForm = new frmReports();
             reportsForm.ShowDialog();
         }
+
+        private void btnInvoice_Click(object sender, EventArgs e)
+        {
+            frmInvoice invoiceForm = new frmInvoice();
+            invoiceForm.ShowDialog();
+        }
     }
 }
