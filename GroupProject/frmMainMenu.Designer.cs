@@ -169,6 +169,7 @@
             btnInvoice.TabIndex = 13;
             btnInvoice.Text = "Invoice";
             btnInvoice.UseVisualStyleBackColor = true;
+            btnInvoice.Click += btnInvoice_Click;
             // 
             // pnlInformation
             // 

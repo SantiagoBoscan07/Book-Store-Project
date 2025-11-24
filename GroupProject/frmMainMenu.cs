@@ -58,6 +58,7 @@ namespace GroupProject
             reportsForm.ShowDialog();
         }
 
+        // Event handler for invoice button click, opens the Invoice form.
         private void btnInvoice_Click(object sender, EventArgs e)
         {
             frmInvoice invoiceForm = new frmInvoice();
