@@ -1,3 +1,11 @@
+/* 
+Affirmation of Authorship:
+Group 7
+Name: Santiago Boscan, Marien Castellanos Garcia, Mariah Harris, Giancarlo Londono, Vianne Novo Grifol
+Date: 11/24/2025
+We affirm that this program was created by us. It is solely our work and does not include any work done by anyone else.
+*/
+
 using System.Configuration;
 using Microsoft.Data.SqlClient;
 

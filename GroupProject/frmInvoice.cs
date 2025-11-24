@@ -21,10 +21,6 @@ namespace GroupProject
         {
             InitializeComponent();
             printDocument1.PrintPage += PrintDocument1_PrintPage;
-
-            btnSearch.Click += btnSearch_Click;
-            btnPrint.Click += btnPrint_Click;
-            btnClose.Click += btnClose_Click;
         }
 
         // Event handler for Search button click
