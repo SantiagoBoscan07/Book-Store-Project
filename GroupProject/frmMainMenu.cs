@@ -64,5 +64,12 @@ namespace GroupProject
             frmInvoice invoiceForm = new frmInvoice();
             invoiceForm.ShowDialog();
         }
+
+        // Event handler for Shopping Cart button click, opens the Shopping Cart form.
+        private void btnShoppingCart_Click(object sender, EventArgs e)
+        {
+            frmShoppingCart shoppingCartForm = new frmShoppingCart();
+            shoppingCartForm.ShowDialog();
+        }
     }
 }

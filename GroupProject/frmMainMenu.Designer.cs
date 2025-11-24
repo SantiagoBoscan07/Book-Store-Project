@@ -113,6 +113,7 @@
             btnShoppingCart.TabIndex = 7;
             btnShoppingCart.Text = "Shopping Cart";
             btnShoppingCart.UseVisualStyleBackColor = true;
+            btnShoppingCart.Click += btnShoppingCart_Click;
             // 
             // btnReports
             // 
