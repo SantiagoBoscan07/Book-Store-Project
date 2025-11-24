@@ -50,5 +50,12 @@ namespace GroupProject
             frmEmployeesMaintenance employeesMaintenanceForm = new frmEmployeesMaintenance();
             employeesMaintenanceForm.ShowDialog();
         }
+
+        // Event handler for Reports button click, opens the Reports form.
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            frmReports reportsForm = new frmReports();
+            reportsForm.ShowDialog();
+        }
     }
 }

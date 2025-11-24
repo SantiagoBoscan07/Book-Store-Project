@@ -122,6 +122,7 @@
             btnReports.TabIndex = 8;
             btnReports.Text = "Reports";
             btnReports.UseVisualStyleBackColor = true;
+            btnReports.Click += btnReports_Click;
             // 
             // lblOrderEntry
             // 
