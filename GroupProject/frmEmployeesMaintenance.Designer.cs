@@ -83,6 +83,7 @@
             btnDelete.TabIndex = 37;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -168,8 +169,10 @@
             // 
             grdEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grdEmployees.Location = new Point(10, 33);
+            grdEmployees.MultiSelect = false;
             grdEmployees.Name = "grdEmployees";
             grdEmployees.ReadOnly = true;
+            grdEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdEmployees.Size = new Size(437, 304);
             grdEmployees.TabIndex = 25;
             // 
@@ -252,6 +255,7 @@
             // 
             // dtpHireDate
             // 
+            dtpHireDate.Format = DateTimePickerFormat.Short;
             dtpHireDate.Location = new Point(539, 306);
             dtpHireDate.Name = "dtpHireDate";
             dtpHireDate.Size = new Size(147, 23);
@@ -261,7 +265,6 @@
             // 
             cboPubID.DropDownStyle = ComboBoxStyle.DropDownList;
             cboPubID.FormattingEnabled = true;
-            cboPubID.Items.AddRange(new object[] { "9952", "0736", "0877", "1389", "1622", "1756", "9901", "9952", "9999" });
             cboPubID.Location = new Point(539, 267);
             cboPubID.Name = "cboPubID";
             cboPubID.Size = new Size(147, 23);

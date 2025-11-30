@@ -86,7 +86,7 @@
             btnClear.TabIndex = 38;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += this.btnClear_Click;
+            btnClear.Click += btnClear_Click;
             // 
             // btnDelete
             // 
@@ -96,6 +96,7 @@
             btnDelete.TabIndex = 37;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -197,10 +198,11 @@
             // 
             // grdStores
             // 
-            grdStores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grdStores.Location = new Point(10, 33);
+            grdStores.MultiSelect = false;
             grdStores.Name = "grdStores";
             grdStores.ReadOnly = true;
+            grdStores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdStores.Size = new Size(437, 259);
             grdStores.TabIndex = 25;
             // 
