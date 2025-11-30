@@ -77,6 +77,7 @@
             btnDelete.TabIndex = 35;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -172,8 +173,10 @@
             // 
             grdPublishers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grdPublishers.Location = new Point(10, 33);
+            grdPublishers.MultiSelect = false;
             grdPublishers.Name = "grdPublishers";
             grdPublishers.ReadOnly = true;
+            grdPublishers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdPublishers.Size = new Size(437, 259);
             grdPublishers.TabIndex = 23;
             // 
