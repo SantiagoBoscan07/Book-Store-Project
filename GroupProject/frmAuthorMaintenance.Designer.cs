@@ -73,7 +73,10 @@
             // 
             grdAuthors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grdAuthors.Location = new Point(12, 36);
+            grdAuthors.MultiSelect = false;
             grdAuthors.Name = "grdAuthors";
+            grdAuthors.ReadOnly = true;
+            grdAuthors.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdAuthors.Size = new Size(437, 385);
             grdAuthors.TabIndex = 1;
             // 
@@ -122,6 +125,7 @@
             btnDelete.TabIndex = 33;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -224,7 +228,7 @@
             // txtAuthorPhoneNumber
             // 
             txtAuthorPhoneNumber.Location = new Point(538, 154);
-            txtAuthorPhoneNumber.Mask = "(999) 000 0000";
+            txtAuthorPhoneNumber.Mask = "999 000 0000";
             txtAuthorPhoneNumber.Name = "txtAuthorPhoneNumber";
             txtAuthorPhoneNumber.Size = new Size(147, 23);
             txtAuthorPhoneNumber.TabIndex = 41;
@@ -308,7 +312,7 @@
             // txtAuthorID
             // 
             txtAuthorID.Location = new Point(538, 41);
-            txtAuthorID.Mask = "999-000-0000";
+            txtAuthorID.Mask = "999-00-0000";
             txtAuthorID.Name = "txtAuthorID";
             txtAuthorID.Size = new Size(147, 23);
             txtAuthorID.TabIndex = 48;

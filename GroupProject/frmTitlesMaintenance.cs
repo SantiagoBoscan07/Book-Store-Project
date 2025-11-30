@@ -33,6 +33,7 @@ namespace GroupProject
 
             // Create a list to hold Title objects
             List<Title> titles = new List<Title>();
+            titles.Clear();
 
             // Open a connection to the database
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -237,6 +238,7 @@ namespace GroupProject
             {
                 MessageBox.Show($"Error adding title: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            LoadGrid();
         }
 
         // Method to check if a title exists in the database

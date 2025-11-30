@@ -36,6 +36,7 @@ namespace GroupProject
 
             // Create a list to hold Publisher objects
             List<Publisher> publishers = new List<Publisher>();
+            publishers.Clear();
 
             // Open a connection to the database
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -145,6 +146,7 @@ namespace GroupProject
             {
                 MessageBox.Show($"Error adding publisher: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            LoadGrid();
         }
 
         // Event handler for the Update button click event.

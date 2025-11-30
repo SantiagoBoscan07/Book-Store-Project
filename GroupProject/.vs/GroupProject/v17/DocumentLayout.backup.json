@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmtitlesmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|solutionrelative:frmtitlesmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmpublishersmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|solutionrelative:frmpublishersmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmtitlesmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|solutionrelative:frmtitlesmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmpublishersmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|solutionrelative:frmpublishersmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,26 +27,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmTitlesMaintenance.cs",
-              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmTitlesMaintenance.cs",
-              "RelativeDocumentMoniker": "frmTitlesMaintenance.cs",
-              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmTitlesMaintenance.cs",
-              "RelativeToolTip": "frmTitlesMaintenance.cs",
-              "ViewState": "AgIAAKoAAAAAAAAAAAAcwKIAAAA1AAAAAAAAAA==",
+              "Title": "frmPublishersMaintenance.cs",
+              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmPublishersMaintenance.cs",
+              "RelativeDocumentMoniker": "frmPublishersMaintenance.cs",
+              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmPublishersMaintenance.cs",
+              "RelativeToolTip": "frmPublishersMaintenance.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAAJQAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T04:21:51.367Z",
+              "WhenOpened": "2025-11-30T21:28:50.434Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmTitlesMaintenance.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmTitlesMaintenance.cs",
-              "RelativeDocumentMoniker": "frmTitlesMaintenance.cs",
-              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmTitlesMaintenance.cs [Design]",
-              "RelativeToolTip": "frmTitlesMaintenance.cs [Design]",
+              "Title": "frmPublishersMaintenance.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmPublishersMaintenance.cs",
+              "RelativeDocumentMoniker": "frmPublishersMaintenance.cs",
+              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmPublishersMaintenance.cs [Design]",
+              "RelativeToolTip": "frmPublishersMaintenance.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T04:21:49.407Z",
+              "WhenOpened": "2025-11-30T21:28:48.576Z",
               "EditorCaption": " [Design]"
             }
           ]
