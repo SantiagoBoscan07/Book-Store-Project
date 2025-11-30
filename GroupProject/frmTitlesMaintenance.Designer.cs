@@ -66,8 +66,10 @@
             // 
             grdTitles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grdTitles.Location = new Point(12, 37);
+            grdTitles.MultiSelect = false;
             grdTitles.Name = "grdTitles";
             grdTitles.ReadOnly = true;
+            grdTitles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdTitles.Size = new Size(437, 259);
             grdTitles.TabIndex = 1;
             // 
@@ -168,6 +170,7 @@
             btnDelete.TabIndex = 15;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnClear
             // 
@@ -244,7 +247,6 @@
             // 
             cboTitlesPubID.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTitlesPubID.FormattingEnabled = true;
-            cboTitlesPubID.Items.AddRange(new object[] { "9952", "0736", "0877", "1389", "1622", "1756", "9901", "9952", "9999" });
             cboTitlesPubID.Location = new Point(541, 194);
             cboTitlesPubID.Name = "cboTitlesPubID";
             cboTitlesPubID.Size = new Size(147, 23);
