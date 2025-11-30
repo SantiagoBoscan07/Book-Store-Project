@@ -238,6 +238,7 @@
             // 
             // dtpPubDate
             // 
+            dtpPubDate.Format = DateTimePickerFormat.Short;
             dtpPubDate.Location = new Point(541, 230);
             dtpPubDate.Name = "dtpPubDate";
             dtpPubDate.Size = new Size(147, 23);

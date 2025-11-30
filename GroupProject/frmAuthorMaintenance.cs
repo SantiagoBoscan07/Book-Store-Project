@@ -61,7 +61,7 @@ namespace GroupProject
                         Zip = reader["zip"].ToString(),
                         isContracted = (bool)reader["contract"]
                     };
-                    // Add the Publishers object to the list
+                    // Add the Author object to the list
                     authors.Add(a);
                     grdAuthors.ClearSelection();
                 }

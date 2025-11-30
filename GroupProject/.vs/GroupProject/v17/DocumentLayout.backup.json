@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmpublishersmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|solutionrelative:frmpublishersmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmemployeesmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|solutionrelative:frmemployeesmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmpublishersmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|solutionrelative:frmpublishersmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmstoresmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|solutionrelative:frmstoresmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmstoresmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|GroupProject.csproj|solutionrelative:frmstoresmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,26 +31,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmPublishersMaintenance.cs",
-              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmPublishersMaintenance.cs",
-              "RelativeDocumentMoniker": "frmPublishersMaintenance.cs",
-              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmPublishersMaintenance.cs",
-              "RelativeToolTip": "frmPublishersMaintenance.cs",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAAAJQAAAAXAAAAAAAAAA==",
+              "Title": "frmEmployeesMaintenance.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmEmployeesMaintenance.cs",
+              "RelativeDocumentMoniker": "frmEmployeesMaintenance.cs",
+              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmEmployeesMaintenance.cs [Design]",
+              "RelativeToolTip": "frmEmployeesMaintenance.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T21:28:50.434Z",
+              "WhenOpened": "2025-11-30T22:38:56.54Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmStoresMaintenance.cs",
+              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmStoresMaintenance.cs",
+              "RelativeDocumentMoniker": "frmStoresMaintenance.cs",
+              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmStoresMaintenance.cs",
+              "RelativeToolTip": "frmStoresMaintenance.cs",
+              "ViewState": "AgIAAGoBAAAAAAAAAAAowHsBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T22:37:00.421Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmPublishersMaintenance.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmPublishersMaintenance.cs",
-              "RelativeDocumentMoniker": "frmPublishersMaintenance.cs",
-              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmPublishersMaintenance.cs [Design]",
-              "RelativeToolTip": "frmPublishersMaintenance.cs [Design]",
+              "Title": "frmStoresMaintenance.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmStoresMaintenance.cs",
+              "RelativeDocumentMoniker": "frmStoresMaintenance.cs",
+              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmStoresMaintenance.cs [Design]",
+              "RelativeToolTip": "frmStoresMaintenance.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T21:28:48.576Z",
+              "WhenOpened": "2025-11-30T22:36:16.184Z",
               "EditorCaption": " [Design]"
             }
           ]
