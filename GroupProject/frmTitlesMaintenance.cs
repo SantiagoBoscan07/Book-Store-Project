@@ -358,7 +358,7 @@ namespace GroupProject
             txtTitle.Clear();
             txtTitleID.Clear();
 
-            // Clear selection of combox box (back to default "Undefined" value)
+            // Clear selection of combox box, default value for combo box
             cboTitlesPubID.SelectedIndex = -1;
             cboType.SelectedIndex = 0;
 

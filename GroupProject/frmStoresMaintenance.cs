@@ -7,24 +7,28 @@ namespace GroupProject
 {
     public partial class frmStoresMaintenance : Form
     {
+        // Connection string to the local SQL Server database
         private const string connectionString =
             @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BookStore.mdf;Integrated Security=True;Connect Timeout=30";
 
+        // List to hold store records
         private List<Store> stores = new List<Store>();
 
         public frmStoresMaintenance()
         {
             InitializeComponent();
+            // Event handler for form load
             this.Load += frmStoresMaintenance_Load;
         }
 
-
+        // Event handler for form load
         private void frmStoresMaintenance_Load(object sender, EventArgs e)
         {
             LoadStoresGrid();
             grdStores.SelectionChanged += grdStores_SelectionChanged;
         }
 
+        // Event handler for grid selection change
         private void grdStores_SelectionChanged(object sender, EventArgs e)
         {
             if (grdStores.CurrentRow == null || grdStores.CurrentRow.DataBoundItem == null)
@@ -34,14 +38,17 @@ namespace GroupProject
             DisplayStore(s);
         }
 
+        // Method to load stores into the grid
         private void LoadStoresGrid()
         {
             stores.Clear();
 
             try
             {
+                // Connect to the database and retrieve store records
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
+                    // SQL query to select store details
                     string sql = @"SELECT stor_id, stor_name, stor_address, city, state, zip
                                    FROM stores
                                    ORDER BY stor_name";
@@ -52,6 +59,7 @@ namespace GroupProject
                         SqlDataReader dr = cmd.ExecuteReader();
                         while (dr.Read())
                         {
+                            // Create Store object from data reader
                             Store s = new Store
                             {
                                 StoreID = Convert.ToInt32(dr["stor_id"]),
@@ -66,10 +74,12 @@ namespace GroupProject
                     }
                 }
 
+                // Bind the list of stores to the data grid
                 grdStores.DataSource = null;
                 grdStores.AutoGenerateColumns = true;
                 grdStores.DataSource = stores;
             }
+            // Handle any exceptions that occur during database operations
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading stores: " + ex.Message,
@@ -79,7 +89,7 @@ namespace GroupProject
             }
         }
 
-
+        // Method to clear input fields
         private void ClearInputs()
         {
             txtStoreID.Clear();
@@ -91,8 +101,10 @@ namespace GroupProject
             txtStoreID.Focus();
         }
 
+        // Method to validate user input
         private bool isValidInput()
         {
+            // Trim and retrieve input values
             string storeIdText = txtStoreID?.Text?.Trim() ?? string.Empty;
             string name = txtStoreName?.Text?.Trim() ?? string.Empty;
             string address = txtStoreAddress?.Text?.Trim() ?? string.Empty;
@@ -100,6 +112,7 @@ namespace GroupProject
             string state = txtStoreState?.Text?.Trim() ?? string.Empty;
             string zip = txtStoreZip?.Text?.Trim() ?? string.Empty;
 
+            // Validate Store ID
             if (string.IsNullOrEmpty(storeIdText))
             {
                 MessageBox.Show("Store ID is required.", "Validation",
@@ -108,6 +121,7 @@ namespace GroupProject
                 return false;
             }
 
+            // Check if Store ID is a valid integer
             if (!int.TryParse(storeIdText, out _))
             {
                 MessageBox.Show("Store ID must be a valid whole number.",
@@ -116,6 +130,7 @@ namespace GroupProject
                 return false;
             }
 
+            // Validate other required fields
             if (string.IsNullOrWhiteSpace(name))
             {
                 MessageBox.Show("Store Name is required.", "Validation",
@@ -124,6 +139,7 @@ namespace GroupProject
                 return false;
             }
 
+            // Validate Address
             if (string.IsNullOrWhiteSpace(address))
             {
                 MessageBox.Show("Address is required.", "Validation",
@@ -132,6 +148,7 @@ namespace GroupProject
                 return false;
             }
 
+            // Validate City
             if (string.IsNullOrWhiteSpace(city))
             {
                 MessageBox.Show("City is required.", "Validation",
@@ -140,6 +157,7 @@ namespace GroupProject
                 return false;
             }
 
+            // Validate State
             if (string.IsNullOrWhiteSpace(state))
             {
                 MessageBox.Show("State is required.", "Validation",
@@ -148,6 +166,7 @@ namespace GroupProject
                 return false;
             }
 
+            // Validate Zip
             if (string.IsNullOrWhiteSpace(zip))
             {
                 MessageBox.Show("Zip is required.", "Validation",
@@ -156,9 +175,11 @@ namespace GroupProject
                 return false;
             }
 
+            // All validations passed
             return true;
         }
 
+        // Method to build a Store object from form inputs
         private Store BuildStoreFromForm()
         {
             return new Store
@@ -172,6 +193,7 @@ namespace GroupProject
             };
         }
 
+        // Method to display store details in the form
         private void DisplayStore(Store s)
         {
             if (s == null) return;
@@ -185,16 +207,19 @@ namespace GroupProject
         }
 
 
+        // Event handler for Close button click
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Event handler for Clear button click
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearInputs();
         }
 
+        // Event handler for Add button click
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!isValidInput()) return;
@@ -242,6 +267,7 @@ namespace GroupProject
             }
         }
 
+        // Event handler for Update button click
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (!isValidInput()) return;
@@ -292,6 +318,7 @@ namespace GroupProject
         }
 
 
+        // Event handler for Delete button click
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtStoreID.Text))
@@ -353,8 +380,7 @@ namespace GroupProject
             }
         }
 
-
-
+        // Event handler for grid cell content click
         private void grdStores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.RowIndex >= grdStores.Rows.Count) return;
@@ -363,6 +389,7 @@ namespace GroupProject
             DisplayStore(selected);
         }
 
+        // Method to check if a store exists by Store ID
         private bool StoreExists(int storeId)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
