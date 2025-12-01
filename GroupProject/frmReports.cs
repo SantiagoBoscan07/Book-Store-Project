@@ -1,10 +1,21 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Windows.Forms;
+
+
+
 
 namespace GroupProject
 {
     public partial class frmReports : Form
     {
+
+        // Retrieve connection string from App.config
+        private readonly string connString =
+            System.Configuration.ConfigurationManager.ConnectionStrings[
+                "GroupProject.Properties.Settings.BookStoreDBConnectionString"
+            ].ConnectionString;
+
         public frmReports()
         {
             InitializeComponent();
@@ -12,41 +23,66 @@ namespace GroupProject
 
         private void frmReports_Load(object sender, EventArgs e)
         {
-            // Fill combo box with placeholder store options
-            cboStores.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboStores.Items.Clear();
 
-            cboStores.Items.Add("Store 1");
-            cboStores.Items.Add("Store 2");
-            cboStores.Items.Add("Store 3");
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                string sql = "SELECT stor_id FROM stores";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                conn.Open();
 
-            cboStores.SelectedIndex = 0;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cboStores.Items.Add(reader["stor_id"].ToString());
+                }
+            }
 
-            // Set default dates
-            dtStartDate.Value = DateTime.Today.AddDays(-7);
-            dtEndDate.Value = DateTime.Today;
+            if (cboStores.Items.Count > 0)
+                cboStores.SelectedIndex = 0;
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            // Validate the date range
+            // Step 1: Validate dates
             if (dtStartDate.Value.Date > dtEndDate.Value.Date)
             {
-                MessageBox.Show("Start date must be BEFORE end date.",
+                MessageBox.Show("Start date must be before end date.",
                                 "Validation",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
                 return;
             }
 
-            // PHASE 2: DataGridView with sample/dummy rows
+            // Step 2: Clear old results
             dgvReport.Rows.Clear();
 
-            dgvReport.Rows.Add("Example Book A", 3, "$19.99", "$59.97", DateTime.Today.ToShortDateString());
-            dgvReport.Rows.Add("Example Book B", 1, "$14.50", "$14.50", DateTime.Today.ToShortDateString());
-            dgvReport.Rows.Add("Example Book C", 2, "$9.99", "$19.98", DateTime.Today.ToShortDateString());
+            // Step 3: Get criteria
+            string storeID = cboStores.SelectedItem.ToString();
+            DateTime startDate = dtStartDate.Value.Date;
+            DateTime endDate = dtEndDate.Value.Date;
 
-            // Update total sales textbox (dummy total for now)
-            txtTotalSales.Text = "$94.45";
+            // Step 4: Call the SalesDB to get real data
+            List<Sales> reportData = SalesDB.GetSalesReport(storeID, startDate, endDate);
+
+            // Step 5: Fill DataGridView with results
+            decimal totalSales = 0;
+
+            foreach (Sales s in reportData)
+            {
+                dgvReport.Rows.Add(
+                    s.TitleName,
+                    s.Quantity,
+                    s.Price.ToString("C"),
+                    s.Subtotal.ToString("C"),
+                    s.OrderDate.ToShortDateString()
+                );
+
+                totalSales += s.Subtotal;
+            }
+
+            // Step 6: Display total
+            txtTotalSales.Text = totalSales.ToString("C");
         }
 
         private void btnClose_Click(object sender, EventArgs e)
