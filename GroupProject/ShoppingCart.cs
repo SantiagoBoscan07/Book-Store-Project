@@ -10,7 +10,7 @@ namespace GroupProject
     internal class ShoppingCart
     {
         // Setters and getters for ShoppingCart properties
-        public List<OrderItem> Items { get; set; } = new List<OrderItem>();
+        public List<Sales> Items { get; set; } = new List<Sales>();
         private const decimal TaxRate = 0.06m;
         public decimal Subtotal { get; set; }
         public decimal Tax {  get; set; }
@@ -23,21 +23,22 @@ namespace GroupProject
             Tax = Subtotal * TaxRate;
             Total = Subtotal + Tax;
         }
-        
+
         //Adding item
-        public void AddItem(OrderItem item)
+        public void AddItem(Sales sale)
         {
-            var existing = Items.FirstOrDefault(i => i.BookID == item.BookID);
+            var existing = Items.FirstOrDefault(i => i.TitleID == sale.TitleID);
             if (existing != null)
             {
-                existing.Quantity += item.Quantity;
+                existing.Quantity += sale.Quantity;
             }
             else
             {
-                OrderItem cart = new OrderItem();
-                cart.BookID = item.BookID;
-                cart.Quantity = item.Quantity;
-                cart.Price = item.Price;
+                Sales cart = new Sales();
+                cart.TitleName = sale.TitleName;
+                cart.TitleID = sale.TitleID;
+                cart.Quantity = (short)sale.Quantity;
+                cart.Price = sale.Price;
                 Items.Add(cart);
             }
 
@@ -45,9 +46,9 @@ namespace GroupProject
         }
 
         //Remove Item
-        public void RemoveItem(OrderItem cart)
+        public void RemoveItem(Sales cart)
         {
-            var item = Items.FirstOrDefault(i => i.BookID == cart.BookID);
+            var item = Items.FirstOrDefault(i => i.TitleID == cart.TitleID);
             if (item != null)
             {
                 Items.Remove(item);
@@ -57,9 +58,9 @@ namespace GroupProject
         }
 
         //Update Item
-        public void UpdateItem(OrderItem cart)
+        public void UpdateItem(Sales cart)
         {
-            var item = Items.FirstOrDefault(i => i.BookID == cart.BookID);
+            var item = Items.FirstOrDefault(i => i.TitleID == cart.TitleID);
             if (cart.Quantity <= 0)
             {
                 Items.Remove(cart);
@@ -69,15 +70,8 @@ namespace GroupProject
                 item.Quantity = cart.Quantity;
             }
 
-                CalculateTotals();
+            CalculateTotals();
         }
 
-        //Commit Order
-        public void CommitOrder() //to be implemented when integrading
-        {
-            //Generate order number
-            //Add all order items to invoice
-            //Return oreder number
-        }
     }
 }

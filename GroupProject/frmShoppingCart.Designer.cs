@@ -36,11 +36,9 @@
             lblSubtotal = new Label();
             grdCurrentOrderItem = new DataGridView();
             lblCurrentOrderItems = new Label();
-            lblOrderNum = new Label();
-            txtOrderNum = new TextBox();
             txtTitle = new TextBox();
             lblSearchTitle = new Label();
-            btnSearch = new Button();
+            btnSearchTitle = new Button();
             grdTitleSearchResult = new DataGridView();
             lblTitleSearchResult = new Label();
             lblQuantity = new Label();
@@ -49,6 +47,12 @@
             btnCommitOrder = new Button();
             btnUpdateItem = new Button();
             btnClose = new Button();
+            btnSelectTitle = new Button();
+            lblSelectedTitle = new Label();
+            txtSelectedTitle = new TextBox();
+            btnClearItem = new Button();
+            btnClearTitle = new Button();
+            btnDeleteItem = new Button();
             ((System.ComponentModel.ISupportInitialize)grdCurrentOrderItem).BeginInit();
             ((System.ComponentModel.ISupportInitialize)grdTitleSearchResult).BeginInit();
             SuspendLayout();
@@ -56,7 +60,7 @@
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(552, 307);
+            lblTotal.Location = new Point(859, 307);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(36, 15);
             lblTotal.TabIndex = 0;
@@ -64,7 +68,7 @@
             // 
             // txtTotal
             // 
-            txtTotal.Location = new Point(591, 304);
+            txtTotal.Location = new Point(898, 304);
             txtTotal.Name = "txtTotal";
             txtTotal.ReadOnly = true;
             txtTotal.Size = new Size(134, 23);
@@ -72,7 +76,7 @@
             // 
             // txtTax
             // 
-            txtTax.Location = new Point(591, 275);
+            txtTax.Location = new Point(898, 275);
             txtTax.Name = "txtTax";
             txtTax.ReadOnly = true;
             txtTax.Size = new Size(134, 23);
@@ -81,7 +85,7 @@
             // lblTax
             // 
             lblTax.AutoSize = true;
-            lblTax.Location = new Point(561, 278);
+            lblTax.Location = new Point(868, 278);
             lblTax.Name = "lblTax";
             lblTax.Size = new Size(27, 15);
             lblTax.TabIndex = 2;
@@ -89,7 +93,7 @@
             // 
             // txtSubtotal
             // 
-            txtSubtotal.Location = new Point(591, 246);
+            txtSubtotal.Location = new Point(898, 246);
             txtSubtotal.Name = "txtSubtotal";
             txtSubtotal.ReadOnly = true;
             txtSubtotal.Size = new Size(134, 23);
@@ -98,7 +102,7 @@
             // lblSubtotal
             // 
             lblSubtotal.AutoSize = true;
-            lblSubtotal.Location = new Point(534, 249);
+            lblSubtotal.Location = new Point(841, 249);
             lblSubtotal.Name = "lblSubtotal";
             lblSubtotal.Size = new Size(54, 15);
             lblSubtotal.TabIndex = 4;
@@ -107,40 +111,26 @@
             // grdCurrentOrderItem
             // 
             grdCurrentOrderItem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdCurrentOrderItem.Location = new Point(534, 34);
+            grdCurrentOrderItem.Location = new Point(607, 34);
+            grdCurrentOrderItem.MultiSelect = false;
             grdCurrentOrderItem.Name = "grdCurrentOrderItem";
-            grdCurrentOrderItem.Size = new Size(191, 206);
+            grdCurrentOrderItem.ReadOnly = true;
+            grdCurrentOrderItem.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdCurrentOrderItem.Size = new Size(425, 206);
             grdCurrentOrderItem.TabIndex = 6;
             // 
             // lblCurrentOrderItems
             // 
             lblCurrentOrderItems.AutoSize = true;
-            lblCurrentOrderItems.Location = new Point(534, 16);
+            lblCurrentOrderItems.Location = new Point(607, 16);
             lblCurrentOrderItems.Name = "lblCurrentOrderItems";
             lblCurrentOrderItems.Size = new Size(112, 15);
             lblCurrentOrderItems.TabIndex = 7;
             lblCurrentOrderItems.Text = "Current Order Items";
             // 
-            // lblOrderNum
-            // 
-            lblOrderNum.AutoSize = true;
-            lblOrderNum.Location = new Point(5, 19);
-            lblOrderNum.Name = "lblOrderNum";
-            lblOrderNum.Size = new Size(67, 15);
-            lblOrderNum.TabIndex = 8;
-            lblOrderNum.Text = "Order Num";
-            // 
-            // txtOrderNum
-            // 
-            txtOrderNum.Location = new Point(78, 16);
-            txtOrderNum.MaxLength = 20;
-            txtOrderNum.Name = "txtOrderNum";
-            txtOrderNum.Size = new Size(207, 23);
-            txtOrderNum.TabIndex = 9;
-            // 
             // txtTitle
             // 
-            txtTitle.Location = new Point(78, 56);
+            txtTitle.Location = new Point(86, 22);
             txtTitle.MaxLength = 80;
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(207, 23);
@@ -149,34 +139,37 @@
             // lblSearchTitle
             // 
             lblSearchTitle.AutoSize = true;
-            lblSearchTitle.Location = new Point(4, 59);
+            lblSearchTitle.Location = new Point(12, 25);
             lblSearchTitle.Name = "lblSearchTitle";
             lblSearchTitle.Size = new Size(68, 15);
             lblSearchTitle.TabIndex = 10;
             lblSearchTitle.Text = "Search Title";
             // 
-            // btnSearch
+            // btnSearchTitle
             // 
-            btnSearch.Location = new Point(291, 56);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(75, 23);
-            btnSearch.TabIndex = 12;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
+            btnSearchTitle.Location = new Point(299, 22);
+            btnSearchTitle.Name = "btnSearchTitle";
+            btnSearchTitle.Size = new Size(96, 23);
+            btnSearchTitle.TabIndex = 12;
+            btnSearchTitle.Text = "Search Title";
+            btnSearchTitle.UseVisualStyleBackColor = true;
+            btnSearchTitle.Click += btnSearchTitle_Click;
             // 
             // grdTitleSearchResult
             // 
             grdTitleSearchResult.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdTitleSearchResult.Location = new Point(12, 119);
+            grdTitleSearchResult.Location = new Point(12, 74);
+            grdTitleSearchResult.MultiSelect = false;
             grdTitleSearchResult.Name = "grdTitleSearchResult";
-            grdTitleSearchResult.Size = new Size(286, 208);
+            grdTitleSearchResult.ReadOnly = true;
+            grdTitleSearchResult.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdTitleSearchResult.Size = new Size(342, 253);
             grdTitleSearchResult.TabIndex = 13;
             // 
             // lblTitleSearchResult
             // 
             lblTitleSearchResult.AutoSize = true;
-            lblTitleSearchResult.Location = new Point(13, 101);
+            lblTitleSearchResult.Location = new Point(12, 56);
             lblTitleSearchResult.Name = "lblTitleSearchResult";
             lblTitleSearchResult.Size = new Size(103, 15);
             lblTitleSearchResult.TabIndex = 14;
@@ -185,7 +178,7 @@
             // lblQuantity
             // 
             lblQuantity.AutoSize = true;
-            lblQuantity.Location = new Point(313, 159);
+            lblQuantity.Location = new Point(379, 176);
             lblQuantity.Name = "lblQuantity";
             lblQuantity.Size = new Size(53, 15);
             lblQuantity.TabIndex = 15;
@@ -193,14 +186,14 @@
             // 
             // txtQuantity
             // 
-            txtQuantity.Location = new Point(372, 156);
+            txtQuantity.Location = new Point(434, 173);
             txtQuantity.Name = "txtQuantity";
             txtQuantity.Size = new Size(64, 23);
             txtQuantity.TabIndex = 16;
             // 
             // btnAddItem
             // 
-            btnAddItem.Location = new Point(313, 188);
+            btnAddItem.Location = new Point(375, 205);
             btnAddItem.Name = "btnAddItem";
             btnAddItem.Size = new Size(105, 23);
             btnAddItem.TabIndex = 17;
@@ -210,7 +203,7 @@
             // 
             // btnCommitOrder
             // 
-            btnCommitOrder.Location = new Point(313, 217);
+            btnCommitOrder.Location = new Point(375, 270);
             btnCommitOrder.Name = "btnCommitOrder";
             btnCommitOrder.Size = new Size(216, 23);
             btnCommitOrder.TabIndex = 18;
@@ -220,7 +213,7 @@
             // 
             // btnUpdateItem
             // 
-            btnUpdateItem.Location = new Point(424, 188);
+            btnUpdateItem.Location = new Point(486, 205);
             btnUpdateItem.Name = "btnUpdateItem";
             btnUpdateItem.Size = new Size(105, 23);
             btnUpdateItem.TabIndex = 19;
@@ -230,7 +223,7 @@
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(313, 299);
+            btnClose.Location = new Point(375, 307);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(216, 23);
             btnClose.TabIndex = 20;
@@ -238,11 +231,75 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
+            // btnSelectTitle
+            // 
+            btnSelectTitle.Location = new Point(401, 22);
+            btnSelectTitle.Name = "btnSelectTitle";
+            btnSelectTitle.Size = new Size(96, 23);
+            btnSelectTitle.TabIndex = 22;
+            btnSelectTitle.Text = "Select Title";
+            btnSelectTitle.UseVisualStyleBackColor = true;
+            btnSelectTitle.Click += btnSelectTitle_Click;
+            // 
+            // lblSelectedTitle
+            // 
+            lblSelectedTitle.AutoSize = true;
+            lblSelectedTitle.Location = new Point(398, 147);
+            lblSelectedTitle.Name = "lblSelectedTitle";
+            lblSelectedTitle.Size = new Size(30, 15);
+            lblSelectedTitle.TabIndex = 24;
+            lblSelectedTitle.Text = "Title";
+            // 
+            // txtSelectedTitle
+            // 
+            txtSelectedTitle.Location = new Point(434, 144);
+            txtSelectedTitle.MaxLength = 80;
+            txtSelectedTitle.Name = "txtSelectedTitle";
+            txtSelectedTitle.ReadOnly = true;
+            txtSelectedTitle.Size = new Size(145, 23);
+            txtSelectedTitle.TabIndex = 25;
+            // 
+            // btnClearItem
+            // 
+            btnClearItem.Location = new Point(375, 234);
+            btnClearItem.Name = "btnClearItem";
+            btnClearItem.Size = new Size(105, 23);
+            btnClearItem.TabIndex = 26;
+            btnClearItem.Text = "Clear Item";
+            btnClearItem.UseVisualStyleBackColor = true;
+            btnClearItem.Click += btnClearItem_Click;
+            // 
+            // btnClearTitle
+            // 
+            btnClearTitle.Location = new Point(503, 22);
+            btnClearTitle.Name = "btnClearTitle";
+            btnClearTitle.Size = new Size(96, 23);
+            btnClearTitle.TabIndex = 27;
+            btnClearTitle.Text = "Clear Title";
+            btnClearTitle.UseVisualStyleBackColor = true;
+            btnClearTitle.Click += btnClearTitle_Click;
+            // 
+            // btnDeleteItem
+            // 
+            btnDeleteItem.Location = new Point(486, 234);
+            btnDeleteItem.Name = "btnDeleteItem";
+            btnDeleteItem.Size = new Size(105, 23);
+            btnDeleteItem.TabIndex = 28;
+            btnDeleteItem.Text = "Delete Item";
+            btnDeleteItem.UseVisualStyleBackColor = true;
+            btnDeleteItem.Click += btnDeleteItem_Click;
+            // 
             // frmShoppingCart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(737, 341);
+            ClientSize = new Size(1044, 341);
+            Controls.Add(btnDeleteItem);
+            Controls.Add(btnClearTitle);
+            Controls.Add(btnClearItem);
+            Controls.Add(txtSelectedTitle);
+            Controls.Add(lblSelectedTitle);
+            Controls.Add(btnSelectTitle);
             Controls.Add(btnClose);
             Controls.Add(btnUpdateItem);
             Controls.Add(btnCommitOrder);
@@ -251,11 +308,9 @@
             Controls.Add(lblQuantity);
             Controls.Add(lblTitleSearchResult);
             Controls.Add(grdTitleSearchResult);
-            Controls.Add(btnSearch);
+            Controls.Add(btnSearchTitle);
             Controls.Add(txtTitle);
             Controls.Add(lblSearchTitle);
-            Controls.Add(txtOrderNum);
-            Controls.Add(lblOrderNum);
             Controls.Add(lblCurrentOrderItems);
             Controls.Add(grdCurrentOrderItem);
             Controls.Add(txtSubtotal);
@@ -284,11 +339,9 @@
         private Label lblSubtotal;
         private DataGridView grdCurrentOrderItem;
         private Label lblCurrentOrderItems;
-        private Label lblOrderNum;
-        private TextBox txtOrderNum;
         private TextBox txtTitle;
         private Label lblSearchTitle;
-        private Button btnSearch;
+        private Button btnSearchTitle;
         private DataGridView grdTitleSearchResult;
         private Label lblTitleSearchResult;
         private Label lblQuantity;
@@ -297,5 +350,11 @@
         private Button btnCommitOrder;
         private Button btnUpdateItem;
         private Button btnClose;
+        private Button btnSelectTitle;
+        private Label lblSelectedTitle;
+        private TextBox txtSelectedTitle;
+        private Button btnClearItem;
+        private Button btnClearTitle;
+        private Button btnDeleteItem;
     }
 }
