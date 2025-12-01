@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             lblInvoice = new Label();
             lblOrderID = new Label();
             txtOrderID = new TextBox();
             btnSearch = new Button();
-            dgvInvoiceItems = new DataGridView();
-            colTitle = new DataGridViewTextBoxColumn();
-            colQuantity = new DataGridViewTextBoxColumn();
-            colPrice = new DataGridViewTextBoxColumn();
-            colExtendedPrice = new DataGridViewTextBoxColumn();
+            grdInvoiceItems = new DataGridView();
             lblSubtotal = new Label();
             lblTax = new Label();
             lblTotal = new Label();
@@ -49,146 +41,120 @@
             txtTotal = new TextBox();
             btnClose = new Button();
             btnPrint = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvInvoiceItems).BeginInit();
+            btnClearSearch = new Button();
+            ((System.ComponentModel.ISupportInitialize)grdInvoiceItems).BeginInit();
             SuspendLayout();
             // 
             // lblInvoice
             // 
             lblInvoice.AutoSize = true;
-            lblInvoice.Location = new Point(37, 19);
+            lblInvoice.Location = new Point(32, 14);
             lblInvoice.Name = "lblInvoice";
-            lblInvoice.Size = new Size(56, 20);
+            lblInvoice.Size = new Size(45, 15);
             lblInvoice.TabIndex = 0;
             lblInvoice.Text = "Invoice";
             // 
             // lblOrderID
             // 
             lblOrderID.AutoSize = true;
-            lblOrderID.Location = new Point(37, 65);
+            lblOrderID.Location = new Point(32, 49);
             lblOrderID.Name = "lblOrderID";
-            lblOrderID.Size = new Size(69, 20);
+            lblOrderID.Size = new Size(54, 15);
             lblOrderID.TabIndex = 1;
             lblOrderID.Text = "Order ID:";
             // 
             // txtOrderID
             // 
-            txtOrderID.Location = new Point(123, 62);
+            txtOrderID.Location = new Point(108, 46);
+            txtOrderID.Margin = new Padding(3, 2, 3, 2);
             txtOrderID.Name = "txtOrderID";
-            txtOrderID.Size = new Size(125, 27);
+            txtOrderID.Size = new Size(110, 23);
             txtOrderID.TabIndex = 2;
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(268, 62);
+            btnSearch.Location = new Point(234, 46);
+            btnSearch.Margin = new Padding(3, 2, 3, 2);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(135, 27);
+            btnSearch.Size = new Size(118, 20);
             btnSearch.TabIndex = 3;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
-            // dgvInvoiceItems
+            // grdInvoiceItems
             // 
-            dgvInvoiceItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInvoiceItems.Columns.AddRange(new DataGridViewColumn[] { colTitle, colQuantity, colPrice, colExtendedPrice });
-            dgvInvoiceItems.Location = new Point(37, 111);
-            dgvInvoiceItems.Name = "dgvInvoiceItems";
-            dgvInvoiceItems.RowHeadersWidth = 51;
-            dgvInvoiceItems.Size = new Size(738, 188);
-            dgvInvoiceItems.TabIndex = 4;
-            // 
-            // colTitle
-            // 
-            colTitle.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleRight;
-            colTitle.DefaultCellStyle = dataGridViewCellStyle1;
-            colTitle.HeaderText = "Title";
-            colTitle.MinimumWidth = 6;
-            colTitle.Name = "colTitle";
-            // 
-            // colQuantity
-            // 
-            colQuantity.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
-            colQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            colQuantity.HeaderText = "Quantity";
-            colQuantity.MinimumWidth = 6;
-            colQuantity.Name = "colQuantity";
-            // 
-            // colPrice
-            // 
-            colPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
-            colPrice.DefaultCellStyle = dataGridViewCellStyle3;
-            colPrice.HeaderText = "Price";
-            colPrice.MinimumWidth = 6;
-            colPrice.Name = "colPrice";
-            // 
-            // colExtendedPrice
-            // 
-            colExtendedPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
-            colExtendedPrice.DefaultCellStyle = dataGridViewCellStyle4;
-            colExtendedPrice.HeaderText = "Extended Price";
-            colExtendedPrice.MinimumWidth = 6;
-            colExtendedPrice.Name = "colExtendedPrice";
+            grdInvoiceItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdInvoiceItems.Location = new Point(32, 83);
+            grdInvoiceItems.Margin = new Padding(3, 2, 3, 2);
+            grdInvoiceItems.MultiSelect = false;
+            grdInvoiceItems.Name = "grdInvoiceItems";
+            grdInvoiceItems.ReadOnly = true;
+            grdInvoiceItems.RowHeadersWidth = 51;
+            grdInvoiceItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdInvoiceItems.Size = new Size(646, 141);
+            grdInvoiceItems.TabIndex = 4;
             // 
             // lblSubtotal
             // 
             lblSubtotal.AutoSize = true;
-            lblSubtotal.Location = new Point(445, 333);
+            lblSubtotal.Location = new Point(389, 250);
             lblSubtotal.Name = "lblSubtotal";
-            lblSubtotal.Size = new Size(68, 20);
+            lblSubtotal.Size = new Size(54, 15);
             lblSubtotal.TabIndex = 5;
             lblSubtotal.Text = "Subtotal:";
             // 
             // lblTax
             // 
             lblTax.AutoSize = true;
-            lblTax.Location = new Point(446, 368);
+            lblTax.Location = new Point(390, 276);
             lblTax.Name = "lblTax";
-            lblTax.Size = new Size(67, 20);
+            lblTax.Size = new Size(54, 15);
             lblTax.TabIndex = 6;
             lblTax.Text = "Tax (6%):";
             // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(465, 404);
+            lblTotal.Location = new Point(407, 303);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(45, 20);
+            lblTotal.Size = new Size(36, 15);
             lblTotal.TabIndex = 7;
             lblTotal.Text = "Total:";
             // 
             // txtSubtotal
             // 
-            txtSubtotal.Location = new Point(519, 326);
+            txtSubtotal.Location = new Point(454, 244);
+            txtSubtotal.Margin = new Padding(3, 2, 3, 2);
             txtSubtotal.Name = "txtSubtotal";
             txtSubtotal.ReadOnly = true;
-            txtSubtotal.Size = new Size(125, 27);
+            txtSubtotal.Size = new Size(110, 23);
             txtSubtotal.TabIndex = 8;
             // 
             // txtTax
             // 
-            txtTax.Location = new Point(519, 365);
+            txtTax.Location = new Point(454, 274);
+            txtTax.Margin = new Padding(3, 2, 3, 2);
             txtTax.Name = "txtTax";
             txtTax.ReadOnly = true;
-            txtTax.Size = new Size(125, 27);
+            txtTax.Size = new Size(110, 23);
             txtTax.TabIndex = 9;
             // 
             // txtTotal
             // 
-            txtTotal.Location = new Point(519, 398);
+            txtTotal.Location = new Point(454, 298);
+            txtTotal.Margin = new Padding(3, 2, 3, 2);
             txtTotal.Name = "txtTotal";
             txtTotal.ReadOnly = true;
-            txtTotal.Size = new Size(125, 27);
+            txtTotal.Size = new Size(110, 23);
             txtTotal.TabIndex = 10;
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(195, 326);
+            btnClose.Location = new Point(171, 244);
+            btnClose.Margin = new Padding(3, 2, 3, 2);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(135, 29);
+            btnClose.Size = new Size(118, 22);
             btnClose.TabIndex = 11;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
@@ -196,18 +162,32 @@
             // 
             // btnPrint
             // 
-            btnPrint.Location = new Point(37, 326);
+            btnPrint.Location = new Point(32, 244);
+            btnPrint.Margin = new Padding(3, 2, 3, 2);
             btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(135, 29);
+            btnPrint.Size = new Size(118, 22);
             btnPrint.TabIndex = 12;
             btnPrint.Text = "Print Invoice";
             btnPrint.UseVisualStyleBackColor = true;
+            btnPrint.Click += btnPrint_Click;
+            // 
+            // btnClearSearch
+            // 
+            btnClearSearch.Location = new Point(358, 46);
+            btnClearSearch.Margin = new Padding(3, 2, 3, 2);
+            btnClearSearch.Name = "btnClearSearch";
+            btnClearSearch.Size = new Size(118, 20);
+            btnClearSearch.TabIndex = 13;
+            btnClearSearch.Text = "Clear Search";
+            btnClearSearch.UseVisualStyleBackColor = true;
+            btnClearSearch.Click += btnClearSearch_Click;
             // 
             // frmInvoice
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
+            Controls.Add(btnClearSearch);
             Controls.Add(btnPrint);
             Controls.Add(btnClose);
             Controls.Add(txtTotal);
@@ -216,14 +196,15 @@
             Controls.Add(lblTotal);
             Controls.Add(lblTax);
             Controls.Add(lblSubtotal);
-            Controls.Add(dgvInvoiceItems);
+            Controls.Add(grdInvoiceItems);
             Controls.Add(btnSearch);
             Controls.Add(txtOrderID);
             Controls.Add(lblOrderID);
             Controls.Add(lblInvoice);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmInvoice";
             Text = "frmInvoice";
-            ((System.ComponentModel.ISupportInitialize)dgvInvoiceItems).EndInit();
+            ((System.ComponentModel.ISupportInitialize)grdInvoiceItems).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -234,7 +215,7 @@
         private Label lblOrderID;
         private TextBox txtOrderID;
         private Button btnSearch;
-        private DataGridView dgvInvoiceItems;
+        private DataGridView grdInvoiceItems;
         private Label lblSubtotal;
         private Label lblTax;
         private Label lblTotal;
@@ -243,9 +224,6 @@
         private TextBox txtTotal;
         private Button btnClose;
         private Button btnPrint;
-        private DataGridViewTextBoxColumn colTitle;
-        private DataGridViewTextBoxColumn colQuantity;
-        private DataGridViewTextBoxColumn colPrice;
-        private DataGridViewTextBoxColumn colExtendedPrice;
+        private Button btnClearSearch;
     }
 }
