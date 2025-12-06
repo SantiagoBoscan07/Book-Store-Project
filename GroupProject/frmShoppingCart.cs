@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BookStoreDO;
+using BookStoreBO;
 
 namespace GroupProject
 {
@@ -19,14 +20,26 @@ namespace GroupProject
         private ShoppingCart cart = new ShoppingCart();
         // Database connection string
         private string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
+        // Keeps counter of current order
+        private string currentOrderNumber;
 
         public frmShoppingCart()
         {
             InitializeComponent();
             // Load titles into the search results grid on form load
             LoadTitles();
+            // Load Stores into the store combox box
+            LoadStores();
             //  Setup the order grid
             SetupOrderGrid();
+            // Load the order number
+            LoadOrderNumber();
+        }
+
+        private void LoadOrderNumber()
+        {
+            currentOrderNumber = SalesDB.GenerateNextOrderNumber();
+            txtOrderID.Text = currentOrderNumber;
         }
 
         // Load all titles from the database into the search results grid.
@@ -80,6 +93,20 @@ namespace GroupProject
 
             // Auto-resize columns to fit content
             grdTitleSearchResult.AutoResizeColumns();
+        }
+
+        private void LoadStores()
+        {
+            // Get all stores from PublisherDB
+            List<Store> stores = StoresDB.GetAllStores();
+
+            if (stores == null)
+                stores = new List<Store>();
+
+            // Bind the publishers ID to the combo box
+            cboStore.DisplayMember = "StoreID";
+            cboStore.ValueMember = "StoreID";
+            cboStore.DataSource = stores;
         }
 
         // Setup the order grid to display current order items.
@@ -333,9 +360,11 @@ namespace GroupProject
                 return;
             }
 
-            // Generate a random 6 digit order number
-            Random rnd = new Random();
-            string orderNumber = rnd.Next(100000, 1000000).ToString();
+            // Use the selected store ID from the combo box
+            string selectedStoreID = cboStore.SelectedValue.ToString();
+
+            // Gets order number
+            string orderNumber = currentOrderNumber;
 
             try
             {
@@ -354,7 +383,7 @@ namespace GroupProject
                         // Execute the insert command
                         using (SqlCommand cmd = new SqlCommand(sql, conn))
                         {
-                            cmd.Parameters.AddWithValue("@stor_id", "8042");
+                            cmd.Parameters.AddWithValue("@stor_id", selectedStoreID);
                             cmd.Parameters.AddWithValue("@ord_num", orderNumber);
                             cmd.Parameters.AddWithValue("@ord_date", DateTime.Now);
                             cmd.Parameters.AddWithValue("@qty", item.Quantity);
@@ -375,6 +404,10 @@ namespace GroupProject
                 UpdateTotalsDisplay();
                 txtSelectedTitle.Clear();
                 txtQuantity.Clear();
+
+                // Generate next order number and update display
+                currentOrderNumber = SalesDB.GenerateNextOrderNumber();
+                txtOrderID.Text = currentOrderNumber;
             }
             // Handle any errors that occur during database operations
             catch (Exception ex)

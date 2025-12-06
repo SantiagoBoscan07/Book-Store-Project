@@ -202,6 +202,7 @@
             Controls.Add(lblOrderID);
             Controls.Add(lblInvoice);
             Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
             Name = "frmInvoice";
             Text = "frmInvoice";
             ((System.ComponentModel.ISupportInitialize)grdInvoiceItems).EndInit();

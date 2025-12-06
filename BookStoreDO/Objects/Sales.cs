@@ -4,6 +4,7 @@ namespace BookStoreDO
 {
     public class Sales
     {
+        public string OrderID { get; set; }
         public string StoreID { get; set; }
         public string TitleID { get; set; }
         public string TitleName { get; set; }

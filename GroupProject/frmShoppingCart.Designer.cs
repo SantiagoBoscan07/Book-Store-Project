@@ -53,6 +53,10 @@
             btnClearItem = new Button();
             btnClearTitle = new Button();
             btnDeleteItem = new Button();
+            lblOrdID = new Label();
+            txtOrderID = new TextBox();
+            lblStore = new Label();
+            cboStore = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)grdCurrentOrderItem).BeginInit();
             ((System.ComponentModel.ISupportInitialize)grdTitleSearchResult).BeginInit();
             SuspendLayout();
@@ -289,11 +293,51 @@
             btnDeleteItem.UseVisualStyleBackColor = true;
             btnDeleteItem.Click += btnDeleteItem_Click;
             // 
+            // lblOrdID
+            // 
+            lblOrdID.AutoSize = true;
+            lblOrdID.Location = new Point(381, 117);
+            lblOrdID.Name = "lblOrdID";
+            lblOrdID.Size = new Size(51, 15);
+            lblOrdID.TabIndex = 29;
+            lblOrdID.Text = "Order ID";
+            // 
+            // txtOrderID
+            // 
+            txtOrderID.Location = new Point(434, 114);
+            txtOrderID.MaxLength = 80;
+            txtOrderID.Name = "txtOrderID";
+            txtOrderID.ReadOnly = true;
+            txtOrderID.Size = new Size(145, 23);
+            txtOrderID.TabIndex = 30;
+            // 
+            // lblStore
+            // 
+            lblStore.AutoSize = true;
+            lblStore.Location = new Point(398, 87);
+            lblStore.Name = "lblStore";
+            lblStore.Size = new Size(34, 15);
+            lblStore.TabIndex = 31;
+            lblStore.Text = "Store";
+            // 
+            // cboStore
+            // 
+            cboStore.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboStore.FormattingEnabled = true;
+            cboStore.Location = new Point(434, 84);
+            cboStore.Name = "cboStore";
+            cboStore.Size = new Size(147, 23);
+            cboStore.TabIndex = 57;
+            // 
             // frmShoppingCart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1044, 341);
+            Controls.Add(cboStore);
+            Controls.Add(lblStore);
+            Controls.Add(txtOrderID);
+            Controls.Add(lblOrdID);
             Controls.Add(btnDeleteItem);
             Controls.Add(btnClearTitle);
             Controls.Add(btnClearItem);
@@ -356,5 +400,9 @@
         private Button btnClearItem;
         private Button btnClearTitle;
         private Button btnDeleteItem;
+        private Label lblOrdID;
+        private TextBox txtOrderID;
+        private Label lblStore;
+        private ComboBox cboStore;
     }
 }

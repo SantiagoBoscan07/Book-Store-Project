@@ -23,6 +23,7 @@ namespace GroupProject
                 // SQL query to retrieve sales data
                 string sql = @"
                     SELECT
+                        s.ord_num,
                         s.stor_id,
                         s.title_id,
                         t.title AS TitleName,
@@ -52,6 +53,7 @@ namespace GroupProject
                     // Create Sales object and populate properties
                     Sales sale = new Sales
                     {
+                        OrderID = reader["ord_num"].ToString(),
                         StoreID = reader["stor_id"].ToString(),
                         TitleID = reader["title_id"].ToString(),
                         TitleName = reader["TitleName"].ToString(),
@@ -65,6 +67,36 @@ namespace GroupProject
             }
 
             return salesList;
+        }
+
+        // Method to get the last order number from sales table
+        public static string GetLastOrderNumber()
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                string sql = "SELECT MAX(ord_num) FROM sales";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                conn.Open();
+
+                object result = cmd.ExecuteScalar();
+                if (result == DBNull.Value || result == null)
+                    return "0000"; 
+                else
+                    return result.ToString();
+            }
+        }
+
+        // Method to generate next order number
+        public static string GenerateNextOrderNumber()
+        {
+            string lastOrder = GetLastOrderNumber();
+
+            // Convert to integer and add 1
+            int nextOrderInt = int.Parse(lastOrder) + 1;
+
+            // Return zero padded 4 digit string
+            return nextOrderInt.ToString("D4"); 
         }
     }
 }
