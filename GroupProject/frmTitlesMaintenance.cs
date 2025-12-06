@@ -37,41 +37,15 @@ namespace GroupProject
         // Method to load publisher IDs into the combo box.
         private void LoadPublisherIDs()
         {
-            // Connection string to the BookStoreDB database
-            string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
-            // SQL Query to retrieve publishers
-            string query = "SELECT pub_id, pub_name, city, state, country FROM publishers";
+            // Get all publishers from PublisherDB
+            List<BookStoreDO.Publisher> publishers = PublishersDB.GetAllPublishers();
 
-            // Create a list to hold Publisher objects
-            List<BookStoreDO.Publisher> publishers = new List<BookStoreDO.Publisher>();
-
-            // Open a connection to the database
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                // Create and execute the SQL command
-                SqlCommand cmd = new SqlCommand(query, conn);
-                conn.Open();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    // Create a new Publisher object and populate its properties
-                    BookStoreDO.Publisher p = new BookStoreDO.Publisher
-                    {
-                        PublisherID = reader["pub_id"].ToString(),
-                        PublisherName = reader["pub_name"] == DBNull.Value ? null : reader["pub_name"].ToString(),
-                        City = reader["city"] == DBNull.Value ? null : reader["city"].ToString(),
-                        State = reader["state"] == DBNull.Value ? null : reader["state"].ToString(),
-                        Country = reader["country"] == DBNull.Value ? "USA" : reader["country"].ToString()
-                    };
-                    // Add the Publisher object to the list
-                    publishers.Add(p);
-                }
-            }
+            if (publishers == null)
+                publishers = new List<BookStoreDO.Publisher>();
 
             // Bind the publishers ID to the combo box
             cboTitlesPubID.DisplayMember = "PublisherID";
-            cboTitlesPubID.ValueMember = "PublisherID";
+            cboTitlesPubID.ValueMember = "PublisherID";  
             cboTitlesPubID.DataSource = publishers;
         }
 
@@ -107,36 +81,6 @@ namespace GroupProject
 
             // Return true indicating valid input
             return true;
-        }
-
-        // Method to add a new title to the database.
-        private void AddTitleToDatabase(Title newTitle)
-        {
-            // Connection string to the BookStoreDB database
-            string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
-
-            // SQL Insert query
-            string insertQuery = @"INSERT INTO titles
-                           (title_id, title, type, pub_id, price, notes, pubdate)
-                           VALUES
-                           (@TitleID, @Title, @Type, @PubID, @Price, @Notes, @PubDate)";
-
-            // Execute the insert command
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
-            {
-                // Add parameters to prevent SQL injection
-                cmd.Parameters.AddWithValue("@TitleID", newTitle.TitleID);
-                cmd.Parameters.AddWithValue("@Title", newTitle.Name);
-                cmd.Parameters.AddWithValue("@Type", newTitle.Type);
-                cmd.Parameters.AddWithValue("@PubID", string.IsNullOrEmpty(newTitle.PublisherID) ? (object)DBNull.Value : newTitle.PublisherID);
-                cmd.Parameters.AddWithValue("@Price", newTitle.Price.HasValue ? (object)newTitle.Price.Value : DBNull.Value);
-                cmd.Parameters.AddWithValue("@Notes", string.IsNullOrEmpty(newTitle.Notes) ? (object)DBNull.Value : newTitle.Notes);
-                cmd.Parameters.AddWithValue("@PubDate", newTitle.PublishedDate);
-                // Open connection and execute
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
         }
 
         // Event handler to add a title

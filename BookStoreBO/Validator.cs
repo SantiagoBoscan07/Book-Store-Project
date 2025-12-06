@@ -93,5 +93,50 @@ namespace BookStoreBO
             // If all validations pass
             return (true, string.Empty);
         }
+
+        // Method to validate store input
+        public static (bool, string) ValidateStoreInput(string storeID,string storeName,string address,string city,string state,string zip)
+        {
+            // Trim all inputs
+            storeID = storeID?.Trim() ?? string.Empty;
+            storeName = storeName?.Trim() ?? string.Empty;
+            address = address?.Trim() ?? string.Empty;
+            city = city?.Trim() ?? string.Empty;
+            state = state?.Trim() ?? string.Empty;
+            zip = zip?.Trim() ?? string.Empty;
+
+            // Validate Store ID
+            if (string.IsNullOrWhiteSpace(storeID))
+                return (false, "Store ID is required.");
+
+            if (!int.TryParse(storeID, out _))
+                return (false, "Store ID must be a valid whole number.");
+
+            // Validate Store Name
+            if (string.IsNullOrWhiteSpace(storeName))
+                return (false, "Store Name is required.");
+
+            // Validate Address
+            if (string.IsNullOrWhiteSpace(address))
+                return (false, "Address is required.");
+
+            // Validate City
+            if (string.IsNullOrWhiteSpace(city))
+                return (false, "City is required.");
+
+            // Validate State
+            if (string.IsNullOrWhiteSpace(state))
+                return (false, "State is required.");
+
+            // Validate ZIP
+            if (string.IsNullOrWhiteSpace(zip))
+                return (false, "ZIP is required.");
+
+            if (!Regex.IsMatch(zip, @"^\d{5}$"))
+                return (false, "ZIP code must be exactly 5 digits.");
+
+            // All validations passed
+            return (true, string.Empty);
+        }
     }
 }

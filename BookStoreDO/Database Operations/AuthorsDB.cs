@@ -6,7 +6,7 @@ using BookStoreBO;
 
 namespace BookStoreDO
 {
-    public static class AuthorDB
+    public static class AuthorsDB
     {
         // Connection string from configuration
         private static readonly string connString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;

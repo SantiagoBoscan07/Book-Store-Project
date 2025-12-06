@@ -122,7 +122,7 @@ namespace GroupProject
             try
             {
                 // Add the new publisher to the database
-                AddPublisherToDatabase(newPublisher);
+                PublishersDB.AddPublisher(newPublisher);
 
                 // List to hold current publishers in the DataGridView
                 List<Publisher> currentPublishers = grdPublishers.DataSource as List<Publisher>;
@@ -157,7 +157,7 @@ namespace GroupProject
             string pubID = txtPublisherID.Text.Trim();
 
             // Check if the publisher exists
-            if (!PublisherExists(pubID))
+            if (!PublishersDB.PublisherExists(pubID))
             {
                 MessageBox.Show($"Cannot update: Publisher ID '{pubID}' does not exist.", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -184,7 +184,7 @@ namespace GroupProject
             try
             {
                 // Update the publisher in the database
-                UpdatePublisherInDatabase(selectedPublisher);
+                PublishersDB.UpdatePublisher(selectedPublisher);
 
                 // Refresh the DataGridView to reflect changes
                 List<Publisher> currentPublishers = grdPublishers.DataSource as List<Publisher>;
@@ -232,7 +232,7 @@ namespace GroupProject
             }
 
             // Check if the publisher exists
-            if (!PublisherExists(pubID))
+            if (!PublishersDB.PublisherExists(pubID))
             {
                 MessageBox.Show($"Cannot delete: Publisher ID '{pubID}' does not exist.", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -256,7 +256,7 @@ namespace GroupProject
             try
             {
                 // Delete the publisher from the database
-                DeletePublisherFromDatabase(new Publisher { PublisherID = pubID });
+                PublishersDB.DeletePublisher(pubID);
 
                 // List of current publishers in the DataGridView
                 List<Publisher> currentPublishers = grdPublishers.DataSource as List<Publisher>;
@@ -302,105 +302,6 @@ namespace GroupProject
 
             // Set the Publisher Country combo box
             cboPublisherCountry.SelectedItem = selectedPublisher.Country ?? "USA";
-        }
-
-        // Method to check if a publisher exists in the database.
-        private bool PublisherExists(string publisherID)
-        {
-            // Connection string to the BookStoreDB database
-            string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
-
-            // SQL Query to check for publisher existence
-            string query = "SELECT COUNT(*) FROM publishers WHERE pub_id = @PubID";
-
-            // Open a connection to the database
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
-            {
-                // Add parameter to the SQL command
-                cmd.Parameters.AddWithValue("@PubID", publisherID);
-                conn.Open();
-                int count = (int)cmd.ExecuteScalar();
-                return count > 0;
-            }
-        }
-
-        // Method to add a new publisher to the database.
-        private void AddPublisherToDatabase(Publisher newPublisher)
-        {
-            // Connection string to the BookStoreDB database
-            string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
-
-            // SQL Query to insert a new publisher
-            string insertQuery = @"INSERT INTO publishers
-                           (pub_id, pub_name, city, state, country)
-                           VALUES
-                           (@PubID, @Name, @City, @State, @Country)";
-
-            // Open a connection to the database
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
-            {
-                // Add parameters to the SQL command
-                cmd.Parameters.AddWithValue("@PubID", newPublisher.PublisherID);
-                cmd.Parameters.AddWithValue("@Name", string.IsNullOrEmpty(newPublisher.PublisherName) ? (object)DBNull.Value : newPublisher.PublisherName);
-                cmd.Parameters.AddWithValue("@City", string.IsNullOrEmpty(newPublisher.City) ? (object)DBNull.Value : newPublisher.City);
-                cmd.Parameters.AddWithValue("@State", string.IsNullOrEmpty(newPublisher.State) ? (object)DBNull.Value : newPublisher.State);
-                cmd.Parameters.AddWithValue("@Country", string.IsNullOrEmpty(newPublisher.Country) ? (object)DBNull.Value : newPublisher.Country);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        // Method to update an existing publisher in the database.
-        private void UpdatePublisherInDatabase(Publisher updatedPublisher)
-        {
-            // Connection string to the BookStoreDB database
-            string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
-
-            // SQL Query to update a publisher
-            string updateQuery = @"UPDATE publishers
-                           SET pub_name = @Name,
-                               city = @City,
-                               state = @State,
-                               country = @Country
-                           WHERE pub_id = @PubID";
-
-            // Open a connection to the database
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
-            {
-                // Add parameters to the SQL command
-                cmd.Parameters.AddWithValue("@PubID", updatedPublisher.PublisherID);
-                cmd.Parameters.AddWithValue("@Name", string.IsNullOrEmpty(updatedPublisher.PublisherName) ? (object)DBNull.Value : updatedPublisher.PublisherName);
-                cmd.Parameters.AddWithValue("@City", string.IsNullOrEmpty(updatedPublisher.City) ? (object)DBNull.Value : updatedPublisher.City);
-                cmd.Parameters.AddWithValue("@State", string.IsNullOrEmpty(updatedPublisher.State) ? (object)DBNull.Value : updatedPublisher.State);
-                cmd.Parameters.AddWithValue("@Country", string.IsNullOrEmpty(updatedPublisher.Country) ? (object)DBNull.Value : updatedPublisher.Country);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        // Method to delete a publisher from the database.
-        private void DeletePublisherFromDatabase(Publisher publisherToDelete)
-        {
-            // Connection string to the BookStoreDB database
-            string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
-
-            // SQL Query to delete a publisher
-            string deleteQuery = "DELETE FROM publishers WHERE pub_id = @PubID";
-
-            // Open a connection to the database
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(deleteQuery, conn))
-            {
-                // Add parameter to the SQL command
-                cmd.Parameters.AddWithValue("@PubID", publisherToDelete.PublisherID);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
         }
 
 

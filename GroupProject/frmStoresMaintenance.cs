@@ -1,8 +1,9 @@
-﻿using System;
+﻿using BookStoreBO;
+using BookStoreDO;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
-using BookStoreDO;
 
 namespace GroupProject
 {
@@ -27,6 +28,14 @@ namespace GroupProject
         {
             LoadStoresGrid();
             grdStores.SelectionChanged += grdStores_SelectionChanged;
+
+            // Select the firts row and display information on input fields if the grid has rows
+            if (grdStores.Rows.Count > 0)
+            {
+                grdStores.Rows[0].Selected = true;
+                Store firstStore = grdStores.Rows[0].DataBoundItem as Store;
+                DisplayStore(firstStore);
+            }
         }
 
         // Event handler for grid selection change
@@ -42,45 +51,13 @@ namespace GroupProject
         // Method to load stores into the grid
         private void LoadStoresGrid()
         {
-            stores.Clear();
-
             try
             {
-                // Connect to the database and retrieve store records
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    // SQL query to select store details
-                    string sql = @"SELECT stor_id, stor_name, stor_address, city, state, zip
-                                   FROM stores
-                                   ORDER BY stor_name";
-
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        conn.Open();
-                        SqlDataReader dr = cmd.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            // Create Store object from data reader
-                            Store s = new Store
-                            {
-                                StoreID = Convert.ToInt32(dr["stor_id"]),
-                                StoreName = dr["stor_name"].ToString(),
-                                StoreAddress = dr["stor_address"].ToString(),
-                                StoreCity = dr["city"].ToString(),
-                                StoreState = dr["state"].ToString(),
-                                StoreZip = dr["zip"].ToString()
-                            };
-                            stores.Add(s);
-                        }
-                    }
-                }
-
-                // Bind the list of stores to the data grid
+                stores = StoresDB.GetAllStores();
                 grdStores.DataSource = null;
                 grdStores.AutoGenerateColumns = true;
                 grdStores.DataSource = stores;
             }
-            // Handle any exceptions that occur during database operations
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading stores: " + ex.Message,
@@ -105,78 +82,26 @@ namespace GroupProject
         // Method to validate user input
         private bool isValidInput()
         {
-            // Trim and retrieve input values
-            string storeIdText = txtStoreID?.Text?.Trim() ?? string.Empty;
-            string name = txtStoreName?.Text?.Trim() ?? string.Empty;
-            string address = txtStoreAddress?.Text?.Trim() ?? string.Empty;
-            string city = txtStoreCity?.Text?.Trim() ?? string.Empty;
-            string state = txtStoreState?.Text?.Trim() ?? string.Empty;
-            string zip = txtStoreZip?.Text?.Trim() ?? string.Empty;
+            var (isValid, message) = Validator.ValidateStoreInput(txtStoreID.Text,txtStoreName.Text,txtStoreAddress.Text,txtStoreCity.Text,txtStoreState.Text,txtStoreZip.Text);
 
-            // Validate Store ID
-            if (string.IsNullOrEmpty(storeIdText))
+            if (!isValid)
             {
-                MessageBox.Show("Store ID is required.", "Validation",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtStoreID?.Focus();
+                // Display validation message
+                MessageBox.Show(message, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Focus the field based on message
+                if (message.Contains("Store ID")) txtStoreID.Focus();
+                else if (message.Contains("Store Name")) txtStoreName.Focus();
+                else if (message.Contains("Address")) txtStoreAddress.Focus();
+                else if (message.Contains("City")) txtStoreCity.Focus();
+                else if (message.Contains("State")) txtStoreState.Focus();
+                else if (message.Contains("ZIP")) txtStoreZip.Focus();
+
+                // Return if failed validation
                 return false;
             }
 
-            // Check if Store ID is a valid integer
-            if (!int.TryParse(storeIdText, out _))
-            {
-                MessageBox.Show("Store ID must be a valid whole number.",
-                    "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtStoreID?.Focus();
-                return false;
-            }
-
-            // Validate other required fields
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                MessageBox.Show("Store Name is required.", "Validation",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtStoreName?.Focus();
-                return false;
-            }
-
-            // Validate Address
-            if (string.IsNullOrWhiteSpace(address))
-            {
-                MessageBox.Show("Address is required.", "Validation",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtStoreAddress?.Focus();
-                return false;
-            }
-
-            // Validate City
-            if (string.IsNullOrWhiteSpace(city))
-            {
-                MessageBox.Show("City is required.", "Validation",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtStoreCity?.Focus();
-                return false;
-            }
-
-            // Validate State
-            if (string.IsNullOrWhiteSpace(state))
-            {
-                MessageBox.Show("State is required.", "Validation",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtStoreState?.Focus();
-                return false;
-            }
-
-            // Validate Zip
-            if (string.IsNullOrWhiteSpace(zip))
-            {
-                MessageBox.Show("Zip is required.", "Validation",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtStoreZip?.Focus();
-                return false;
-            }
-
-            // All validations passed
+            // Return if all inputs are valid
             return true;
         }
 
@@ -236,35 +161,14 @@ namespace GroupProject
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    string sql = @"INSERT INTO stores
-                           (stor_id, stor_name, stor_address, city, state, zip)
-                           VALUES (@id, @name, @addr, @city, @state, @zip)";
-
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-
-                    cmd.Parameters.AddWithValue("@id", s.StoreID);
-                    cmd.Parameters.AddWithValue("@name", s.StoreName);
-                    cmd.Parameters.AddWithValue("@addr", s.StoreAddress);
-                    cmd.Parameters.AddWithValue("@city", s.StoreCity);
-                    cmd.Parameters.AddWithValue("@state", s.StoreState);
-                    cmd.Parameters.AddWithValue("@zip", s.StoreZip);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-
-                MessageBox.Show("Store added successfully.",
-                                "Add Store", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                StoresDB.AddStore(s); 
+                MessageBox.Show("Store added successfully.", "Add Store", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadStoresGrid();
                 ClearInputs();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error adding store: " + ex.Message,
-                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error adding store: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -284,37 +188,13 @@ namespace GroupProject
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    string sql = @"UPDATE stores
-                           SET stor_name = @name,
-                               stor_address = @addr,
-                               city = @city,
-                               state = @state,
-                               zip = @zip
-                           WHERE stor_id = @id";
-
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@id", s.StoreID);
-                    cmd.Parameters.AddWithValue("@name", s.StoreName);
-                    cmd.Parameters.AddWithValue("@addr", s.StoreAddress);
-                    cmd.Parameters.AddWithValue("@city", s.StoreCity);
-                    cmd.Parameters.AddWithValue("@state", s.StoreState);
-                    cmd.Parameters.AddWithValue("@zip", s.StoreZip);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-
-                MessageBox.Show("Store updated successfully.",
-                                "Update Store", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                StoresDB.UpdateStore(s); 
+                MessageBox.Show("Store updated successfully.", "Update Store", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadStoresGrid();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error updating store: " + ex.Message,
-                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error updating store: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -358,26 +238,14 @@ namespace GroupProject
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    string sql = "DELETE FROM stores WHERE stor_id = @id";
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@id", storeId);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-
-                MessageBox.Show("Store deleted successfully.",
-                                "Delete Store", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                StoresDB.DeleteStore(storeId); 
+                MessageBox.Show("Store deleted successfully.", "Delete Store", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearInputs();
                 LoadStoresGrid();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error deleting store: " + ex.Message,
-                                "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error deleting store: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -393,17 +261,7 @@ namespace GroupProject
         // Method to check if a store exists by Store ID
         private bool StoreExists(int storeId)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string sql = "SELECT COUNT(*) FROM stores WHERE stor_id = @id";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@id", storeId);
-
-                conn.Open();
-                int count = (int)cmd.ExecuteScalar();
-
-                return count > 0;
-            }
+            return StoresDB.StoreExists(storeId);
         }
 
     }

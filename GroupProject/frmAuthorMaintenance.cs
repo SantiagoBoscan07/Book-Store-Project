@@ -31,7 +31,7 @@ namespace GroupProject
         private void LoadGrid()
         {
             // Load authors from the database
-            grdAuthors.DataSource = AuthorDB.GetAllAuthors();
+            grdAuthors.DataSource = AuthorsDB.GetAllAuthors();
             grdAuthors.ClearSelection();
         }
 
@@ -98,7 +98,7 @@ namespace GroupProject
             try
             {
                 // Add author to database
-                AuthorDB.AddAuthor(newAuthor);
+                AuthorsDB.AddAuthor(newAuthor);
 
                 // Update DataGridView
                 List<Author> authors = grdAuthors.DataSource as List<Author> ?? new List<Author>();
@@ -160,7 +160,7 @@ namespace GroupProject
             try
             {
                 // Update author in database
-                AuthorDB.UpdateAuthor(updatedAuthor);
+                AuthorsDB.UpdateAuthor(updatedAuthor);
 
                 // Refresh DataGridView
                 List<Author> authors = grdAuthors.DataSource as List<Author>;
@@ -269,7 +269,7 @@ namespace GroupProject
             try
             {
                 // Delete author from database
-                AuthorDB.DeleteAuthor(authorID);
+                AuthorsDB.DeleteAuthor(authorID);
 
                 // Update DataGridView
                 List<Author> authors = grdAuthors.DataSource as List<Author>;
@@ -292,6 +292,6 @@ namespace GroupProject
         }
 
         // Method to check if author exists
-        private bool AuthorExists(string authorID) => AuthorDB.AuthorExists(authorID);
+        private bool AuthorExists(string authorID) => AuthorsDB.AuthorExists(authorID);
     }
 }
