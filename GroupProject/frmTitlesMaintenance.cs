@@ -28,46 +28,11 @@ namespace GroupProject
         // Method to load titles from the database and display them in the DataGridView.
         private void LoadGrid()
         {
-            // Connection string to the BookStoreDB database
-            string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
-            // SQL Query to retrieve publishers
-            string query = "SELECT title_id, title, type, pub_id, price, advance, notes, pubdate FROM titles";
-
-            // Create a list to hold Title objects
-            List<Title> titles = new List<Title>();
-            titles.Clear();
-
-            // Open a connection to the database
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                // Create and execute the SQL command
-                SqlCommand cmd = new SqlCommand(query, conn);
-                conn.Open();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    // Create a new Title object and populate its properties
-                    Title t = new Title
-                    {
-                        TitleID = reader["title_id"].ToString(),
-                        Name = reader["title"].ToString(),
-                        Type = reader["type"].ToString(),
-                        PublisherID = reader["pub_id"].ToString(),
-                        Price = reader["price"] == DBNull.Value ? null : (decimal?)reader["price"],
-                        Notes = reader["notes"].ToString(),
-                        PublishedDate = (DateTime)reader["pubdate"]
-                    };
-                    // Add the Title object to the list
-                    titles.Add(t);
-                    grdTitles.ClearSelection();
-                }
-            }
-
-            // Bind the list to the DataGridView
+            var titles = TitlesDB.GetAllTitles();
             grdTitles.DataSource = titles;
+            grdTitles.ClearSelection();
         }
+
 
         // Method to load publisher IDs into the combo box.
         private void LoadPublisherIDs()
@@ -199,7 +164,7 @@ namespace GroupProject
             try
             {
                 // Insert into database
-                AddTitleToDatabase(newTitle);
+                TitlesDB.AddTitle(newTitle);
 
                 // Update DataGridView 
                 List<Title> currentTitles = grdTitles.DataSource as List<Title>;
@@ -225,25 +190,6 @@ namespace GroupProject
             LoadGrid();
         }
 
-        // Method to check if a title exists in the database
-        private bool TitleExists(string titleID)
-        {
-            // Connection string to the BookStoreDB database
-            string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
-            // SQL Query to check if the titleID is in the database
-            string query = "SELECT COUNT(*) FROM titles WHERE title_id = @TitleID";
-
-            // Execute the query
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
-            {
-                cmd.Parameters.AddWithValue("@TitleID", titleID);
-                conn.Open();
-                int count = (int)cmd.ExecuteScalar();
-                return count > 0;
-            }
-        }
-
         // Event handler to update a title
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -255,7 +201,7 @@ namespace GroupProject
             string titleID = txtTitleID.Text.Trim();
 
             // Calls method to check if titleID exists in database
-            if (!TitleExists(titleID))
+            if (!TitlesDB.TitleExists(titleID))
             {
                 MessageBox.Show($"Cannot update: Title ID '{titleID}' does not exist in the database.", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -282,7 +228,7 @@ namespace GroupProject
             try
             {
                 // Calls method to update the database
-                UpdateTitleInDatabase(selectedTitle);
+                TitlesDB.UpdateTitle(selectedTitle);
 
                 // Refresh DataGridView
                 List<Title> currentTitles = grdTitles.DataSource as List<Title>;
@@ -295,38 +241,6 @@ namespace GroupProject
             catch (Exception ex)
             {
                 MessageBox.Show($"Error updating title: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Update method in database
-        private void UpdateTitleInDatabase(Title updatedTitle)
-        {
-            // Connection string to the BookStoreDB database
-            string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
-            // SQL Update query
-            string updateQuery = @"UPDATE titles
-                           SET title = @Title,
-                               type = @Type,
-                               pub_id = @PubID,
-                               price = @Price,
-                               notes = @Notes,
-                               pubdate = @PubDate
-                           WHERE title_id = @TitleID";
-            // Execute the update command
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
-            {
-                // Add parameters to prevent SQL injection
-                cmd.Parameters.AddWithValue("@TitleID", updatedTitle.TitleID);
-                cmd.Parameters.AddWithValue("@Title", updatedTitle.Name);
-                cmd.Parameters.AddWithValue("@Type", updatedTitle.Type);
-                cmd.Parameters.AddWithValue("@PubID", string.IsNullOrEmpty(updatedTitle.PublisherID) ? (object)DBNull.Value : updatedTitle.PublisherID);
-                cmd.Parameters.AddWithValue("@Price", updatedTitle.Price.HasValue ? (object)updatedTitle.Price.Value : DBNull.Value);
-                cmd.Parameters.AddWithValue("@Notes", string.IsNullOrEmpty(updatedTitle.Notes) ? (object)DBNull.Value : updatedTitle.Notes);
-                cmd.Parameters.AddWithValue("@PubDate", updatedTitle.PublishedDate);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
             }
         }
 
@@ -366,7 +280,7 @@ namespace GroupProject
             }
 
             // Check if title exists in the database
-            if (!TitleExists(titleID))
+            if (!TitlesDB.TitleExists(titleID))
             {
                 MessageBox.Show($"Cannot delete: Title ID '{titleID}' does not exist in the database.", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -394,7 +308,7 @@ namespace GroupProject
             try
             {
                 // Delete from database
-                DeleteTitleFromDatabase(new Title { TitleID = titleID });
+                TitlesDB.DeleteTitle(titleID);
 
                 // Remove from DataGridView
                 List<Title> currentTitles = grdTitles.DataSource as List<Title>;
@@ -419,26 +333,6 @@ namespace GroupProject
             catch (Exception ex)
             {
                 MessageBox.Show($"Error deleting title: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Method to delete a Title object from the database
-        private void DeleteTitleFromDatabase(Title titleToDelete)
-        {
-            // Connection string to the BookStoreDB database
-            string connectionString = ConfigurationManager.ConnectionStrings["GroupProject.Properties.Settings.BookStoreDBConnectionString"].ConnectionString;
-
-            // SQL Delete query
-            string deleteQuery = "DELETE FROM titles WHERE title_id = @TitleID";
-
-            // Execute the delete command
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(deleteQuery, conn))
-            {
-                // Add parameter to prevent SQL injection
-                cmd.Parameters.AddWithValue("@TitleID", titleToDelete.TitleID);
-                conn.Open();
-                cmd.ExecuteNonQuery();
             }
         }
 

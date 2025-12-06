@@ -3,7 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5ED377E9-B0B1-445B-A2EE-7CCD96C14904}|..\\BookStoreDO\\BookStoreDO.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\bookstoredo\\objects\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|BookStoreUI.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmpublishersmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|BookStoreUI.csproj|solutionrelative:frmpublishersmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Author.cs",
-              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\BookStoreDO\\Objects\\Author.cs",
-              "RelativeDocumentMoniker": "..\\BookStoreDO\\Objects\\Author.cs",
-              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\BookStoreDO\\Objects\\Author.cs",
-              "RelativeToolTip": "..\\BookStoreDO\\Objects\\Author.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "frmPublishersMaintenance.cs",
+              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmPublishersMaintenance.cs",
+              "RelativeDocumentMoniker": "frmPublishersMaintenance.cs",
+              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmPublishersMaintenance.cs",
+              "RelativeToolTip": "frmPublishersMaintenance.cs",
+              "ViewState": "AgIAAHABAAAAAAAAAAAAwH4BAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T18:41:25.388Z",
+              "WhenOpened": "2025-12-06T19:39:05.155Z",
               "EditorCaption": ""
             }
           ]
