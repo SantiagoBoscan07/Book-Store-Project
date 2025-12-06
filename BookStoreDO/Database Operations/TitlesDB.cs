@@ -79,7 +79,7 @@ namespace BookStoreDO
                 cmd.Parameters.AddWithValue("@PubID", string.IsNullOrWhiteSpace(t.PublisherID) ? (object)DBNull.Value : t.PublisherID.Trim());
                 cmd.Parameters.AddWithValue("@Price", t.Price.HasValue ? (object)t.Price.Value : DBNull.Value);
                 cmd.Parameters.AddWithValue("@Notes", string.IsNullOrWhiteSpace(t.Notes) ? (object)DBNull.Value : t.Notes.Trim());
-                cmd.Parameters.AddWithValue("@PubDate", t.PublishedDate);
+                cmd.Parameters.AddWithValue("@PubDate", t.PublishedDate.Date);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -110,7 +110,7 @@ namespace BookStoreDO
                 cmd.Parameters.AddWithValue("@PubID", string.IsNullOrWhiteSpace(t.PublisherID) ? (object)DBNull.Value : t.PublisherID.Trim());
                 cmd.Parameters.AddWithValue("@Price", t.Price.HasValue ? (object)t.Price.Value : DBNull.Value);
                 cmd.Parameters.AddWithValue("@Notes", string.IsNullOrWhiteSpace(t.Notes) ? (object)DBNull.Value : t.Notes.Trim());
-                cmd.Parameters.AddWithValue("@PubDate", t.PublishedDate);
+                cmd.Parameters.AddWithValue("@PubDate", t.PublishedDate.Date);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();

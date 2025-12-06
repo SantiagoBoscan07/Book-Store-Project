@@ -1,19 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|BookStoreUI.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmemployeesmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|BookStoreUI.csproj|solutionrelative:frmemployeesmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|BookStoreUI.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\groupproject\\frmemployeesmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D3172750-D51E-4AF9-9B37-54DCFE9BED00}|BookStoreUI.csproj|solutionrelative:frmemployeesmaintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC812240-47D5-48CF-A5BB-BEC3BC3CFE9B}|..\\BookStoreBO\\BookStoreBO.csproj|c:\\users\\santiago uwu\\desktop\\bookstore project\\bookstorebo\\validator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -21,49 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 243,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmEmployeesMaintenance.cs",
-              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmEmployeesMaintenance.cs",
-              "RelativeDocumentMoniker": "frmEmployeesMaintenance.cs",
-              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmEmployeesMaintenance.cs",
-              "RelativeToolTip": "frmEmployeesMaintenance.cs",
-              "ViewState": "AgIAAMwBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T20:12:36.983Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmEmployeesMaintenance.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmEmployeesMaintenance.cs",
-              "RelativeDocumentMoniker": "frmEmployeesMaintenance.cs",
-              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\frmEmployeesMaintenance.cs [Design]",
-              "RelativeToolTip": "frmEmployeesMaintenance.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T20:12:35.243Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Validator.cs",
-              "DocumentMoniker": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\BookStoreBO\\Validator.cs",
-              "RelativeDocumentMoniker": "..\\BookStoreBO\\Validator.cs",
-              "ToolTip": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\BookStoreBO\\Validator.cs",
-              "RelativeToolTip": "..\\BookStoreBO\\Validator.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAAwH4AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T20:09:00.73Z",
-              "EditorCaption": ""
             }
           ]
         }

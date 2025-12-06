@@ -62,7 +62,7 @@ namespace BookStoreBO
         }
 
         // Method to validate author input
-        public static (bool, string) ValidateAuthorInput(string authorID, string firstName, string lastName,string phone, bool contractedSelected, string zip)
+        public static (bool, string) ValidateAuthorInput(string authorID, string firstName, string lastName, string phone, bool contractedSelected, string zip)
         {
             // Author ID 
             if (string.IsNullOrWhiteSpace(authorID))
@@ -95,7 +95,7 @@ namespace BookStoreBO
         }
 
         // Method to validate store input
-        public static (bool, string) ValidateStoreInput(string storeID,string storeName,string address,string city,string state,string zip)
+        public static (bool, string) ValidateStoreInput(string storeID, string storeName, string address, string city, string state, string zip)
         {
             // Trim all inputs
             storeID = storeID?.Trim() ?? string.Empty;
@@ -136,6 +136,58 @@ namespace BookStoreBO
                 return (false, "ZIP code must be exactly 5 digits.");
 
             // All validations passed
+            return (true, string.Empty);
+        }
+
+        // Method to validate inputs in the employee screen
+        public static (bool, string) ValidateEmployeeInput(string empID, string firstName, string lastName, string middleInitial, string jobIDText, string jobLevelText, string publisherID, DateTime hireDate)
+        {
+            // Trim all input
+            empID = empID?.Trim() ?? string.Empty;
+            firstName = firstName?.Trim() ?? string.Empty;
+            lastName = lastName?.Trim() ?? string.Empty;
+            middleInitial = middleInitial?.Trim() ?? string.Empty;
+            jobIDText = jobIDText?.Trim() ?? string.Empty;
+            jobLevelText = jobLevelText?.Trim() ?? string.Empty;
+            publisherID = publisherID?.Trim() ?? string.Empty;
+
+            // Employee ID required
+            if (string.IsNullOrWhiteSpace(empID))
+                return (false, "Employee ID is required.");
+
+            // Validate Employee ID patterns
+            bool pattern1 = Regex.IsMatch(empID, @"^[A-Z]{3}[1-9][0-9]{4}[FM]$");
+            bool pattern2 = Regex.IsMatch(empID, @"^[A-Z]-[A-Z][1-9][0-9]{4}[FM]$");
+            if (!pattern1 && !pattern2)
+                return (false, "Employee ID format is invalid. Valid patterns:\nABC12345F or A-B12345F");
+
+            // First and last name required
+            if (string.IsNullOrWhiteSpace(firstName))
+                return (false, "First name is required.");
+            if (string.IsNullOrWhiteSpace(lastName))
+                return (false, "Last name is required.");
+
+            // Job ID required and must be numeric
+            if (string.IsNullOrWhiteSpace(jobIDText))
+                return (false, "Job ID is required.");
+            if (!short.TryParse(jobIDText, out _))
+                return (false, "Job ID must be a valid number.");
+
+            // Job level validation
+            if (string.IsNullOrWhiteSpace(jobLevelText))
+                return (false, "Job Level is required.");
+            if (!byte.TryParse(jobLevelText, out _))
+                return (false, "Job Level must be a valid number (0–255).");
+
+            // Publisher ID required
+            if (string.IsNullOrWhiteSpace(publisherID))
+                return (false, "Publisher ID is required.");
+
+            // Hire date cannot be in the future
+            if (hireDate > DateTime.Now)
+                return (false, "Hire date cannot be in the future.");
+
+            // All validation passed
             return (true, string.Empty);
         }
     }
