@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using BookStoreDO;
 
 namespace GroupProject
 {

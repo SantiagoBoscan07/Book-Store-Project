@@ -1,0 +1,15 @@
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\bin\Debug\net8.0\BookStoreBO.exe
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\bin\Debug\net8.0\BookStoreBO.deps.json
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\bin\Debug\net8.0\BookStoreBO.runtimeconfig.json
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\bin\Debug\net8.0\BookStoreBO.dll
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\bin\Debug\net8.0\BookStoreBO.pdb
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\obj\Debug\net8.0\BookStoreBO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\obj\Debug\net8.0\BookStoreBO.AssemblyInfoInputs.cache
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\obj\Debug\net8.0\BookStoreBO.AssemblyInfo.cs
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\obj\Debug\net8.0\BookStoreBO.csproj.CoreCompileInputs.cache
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\obj\Debug\net8.0\BookStoreBO.sourcelink.json
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\obj\Debug\net8.0\BookStoreBO.dll
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\obj\Debug\net8.0\refint\BookStoreBO.dll
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\obj\Debug\net8.0\BookStoreBO.pdb
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\obj\Debug\net8.0\BookStoreBO.genruntimeconfig.cache
+C:\Users\Santiago uwu\Desktop\BookStore Project\BookStoreBO\obj\Debug\net8.0\ref\BookStoreBO.dll

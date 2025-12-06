@@ -416,6 +416,19 @@
           }
         }
       },
+      "NLog/6.0.6": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/NLog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/NLog.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.ClientModel/1.5.1": {
         "type": "package",
         "dependencies": {
@@ -440,7 +453,7 @@
           "System.Security.Cryptography.ProtectedData": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/System.Configuration.ConfigurationManager.dll": {
             "related": ".xml"
           }
         },
@@ -475,7 +488,7 @@
       "System.Diagnostics.EventLog/8.0.1": {
         "type": "package",
         "compile": {
-          "lib/net8.0/_._": {
+          "lib/net8.0/System.Diagnostics.EventLog.dll": {
             "related": ".xml"
           }
         },
@@ -608,6 +621,32 @@
         },
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
+        }
+      },
+      "BookStoreBO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/BookStoreBO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BookStoreBO.dll": {}
+        }
+      },
+      "BookStoreDO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BookStoreBO": "1.0.0",
+          "Microsoft.Data.SqlClient": "6.1.3",
+          "NLog": "6.0.6",
+          "System.Configuration.ConfigurationManager": "8.0.1"
+        },
+        "compile": {
+          "bin/placeholder/BookStoreDO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BookStoreDO.dll": {}
         }
       }
     }
@@ -1231,6 +1270,28 @@
         "microsoft.sqlserver.server.nuspec"
       ]
     },
+    "NLog/6.0.6": {
+      "sha512": "eUd/LDIwPtufj5OxtzFYiwuoKpzaS87iqO9P9D05avLCk4jIoOlqMwRH0o/43LmzM+CmgVAdDrCOq/rOK0sDKw==",
+      "type": "package",
+      "path": "nlog/6.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/net46/NLog.dll",
+        "lib/net46/NLog.xml",
+        "lib/netstandard2.0/NLog.dll",
+        "lib/netstandard2.0/NLog.xml",
+        "lib/netstandard2.1/NLog.dll",
+        "lib/netstandard2.1/NLog.xml",
+        "nlog.6.0.6.nupkg.sha512",
+        "nlog.nuspec"
+      ]
+    },
     "System.ClientModel/1.5.1": {
       "sha512": "k2jKSO0X45IqhVOT9iQB4xralNN9foRQsRvXBTyRpAVxyzCJlG895T9qYrQWbcJ6OQXxOouJQ37x5nZH5XKK+A==",
       "type": "package",
@@ -1590,10 +1651,22 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "BookStoreBO/1.0.0": {
+      "type": "project",
+      "path": "../BookStoreBO/BookStoreBO.csproj",
+      "msbuildProject": "../BookStoreBO/BookStoreBO.csproj"
+    },
+    "BookStoreDO/1.0.0": {
+      "type": "project",
+      "path": "../BookStoreDO/BookStoreDO.csproj",
+      "msbuildProject": "../BookStoreDO/BookStoreDO.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
+      "BookStoreBO >= 1.0.0",
+      "BookStoreDO >= 1.0.0",
       "Microsoft.Data.SqlClient >= 6.1.3"
     ]
   },
@@ -1604,9 +1677,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\GroupProject.csproj",
-      "projectName": "GroupProject",
-      "projectPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\GroupProject.csproj",
+      "projectUniqueName": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\BookStoreUI.csproj",
+      "projectName": "BookStoreUI",
+      "projectPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\BookStoreUI.csproj",
       "packagesPath": "C:\\Users\\Santiago uwu\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\obj\\",
       "projectStyle": "PackageReference",
@@ -1628,7 +1701,14 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\BookStoreBO\\BookStoreBO.csproj": {
+              "projectPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\BookStoreBO\\BookStoreBO.csproj"
+            },
+            "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\BookStoreDO\\BookStoreDO.csproj": {
+              "projectPath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\BookStoreDO\\BookStoreDO.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

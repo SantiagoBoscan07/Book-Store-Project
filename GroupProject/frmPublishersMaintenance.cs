@@ -10,6 +10,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BookStoreDO;
+using BookStoreBO;
 
 namespace GroupProject
 {
@@ -71,31 +73,26 @@ namespace GroupProject
         // Method to validate user input before database operations.
         private bool isValidInput()
         {
-            // Trim Publisher ID input
-            string pubId = txtPublisherID.Text.Trim();
-
-            // Check if Publisher ID is empty
-            if (string.IsNullOrWhiteSpace(pubId))
-            {
-                MessageBox.Show("Publisher ID is required.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // Define valid fixed Publisher IDs
-            string[] validFixedIds = { "1756", "1622", "0877", "0736", "1389" };
-
-            // Check if Publisher ID matches fixed values or the pattern 99##
-            bool matchesFixed = validFixedIds.Contains(pubId);
-            bool matchesPattern = Regex.IsMatch(pubId, @"^99\d\d$");
-
             // Validate Publisher ID
-            if (!matchesFixed && !matchesPattern)
+            var (isValid, message) = Validator.ValidatePublisherInput(txtPublisherID.Text);
+
+            // If validation fails, show message and set focus
+            if (!isValid)
             {
-                MessageBox.Show("Publisher ID must be one of the following: 1756, 1622, 0877, 0736, 1389, or follow the numeric pattern 99##.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Display validation message
+                MessageBox.Show(message, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Set focus depending on the message
+                if (message.Contains("required"))
+                    txtPublisherID.Focus();
+                else if (message.Contains("pattern"))
+                    txtPublisherID.Focus();
+
+                // Return false if validation fails
                 return false;
             }
 
-            // All validations passed
+            // Return true if all validations pass
             return true;
         }
 

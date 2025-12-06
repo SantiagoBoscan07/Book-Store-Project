@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w9BAnFiFyeI=",
+  "dgSpecHash": "YsK9unaQlCI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\GroupProject.csproj",
+  "projectFilePath": "C:\\Users\\Santiago uwu\\Desktop\\BookStore Project\\GroupProject\\BookStoreUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Santiago uwu\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\Santiago uwu\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
@@ -25,6 +25,7 @@
     "C:\\Users\\Santiago uwu\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\7.7.1\\microsoft.identitymodel.protocols.openidconnect.7.7.1.nupkg.sha512",
     "C:\\Users\\Santiago uwu\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.7.1\\microsoft.identitymodel.tokens.7.7.1.nupkg.sha512",
     "C:\\Users\\Santiago uwu\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
+    "C:\\Users\\Santiago uwu\\.nuget\\packages\\nlog\\6.0.6\\nlog.6.0.6.nupkg.sha512",
     "C:\\Users\\Santiago uwu\\.nuget\\packages\\system.clientmodel\\1.5.1\\system.clientmodel.1.5.1.nupkg.sha512",
     "C:\\Users\\Santiago uwu\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.1\\system.configuration.configurationmanager.8.0.1.nupkg.sha512",
     "C:\\Users\\Santiago uwu\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",

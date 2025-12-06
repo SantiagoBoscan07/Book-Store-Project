@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Security.Policy;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using BookStoreDO;
+using BookStoreBO;
 
 namespace GroupProject
 {
@@ -76,7 +78,7 @@ namespace GroupProject
             string query = "SELECT pub_id, pub_name, city, state, country FROM publishers";
 
             // Create a list to hold Publisher objects
-            List<Publisher> publishers = new List<Publisher>();
+            List<BookStoreDO.Publisher> publishers = new List<BookStoreDO.Publisher>();
 
             // Open a connection to the database
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -89,7 +91,7 @@ namespace GroupProject
                 while (reader.Read())
                 {
                     // Create a new Publisher object and populate its properties
-                    Publisher p = new Publisher
+                    BookStoreDO.Publisher p = new BookStoreDO.Publisher
                     {
                         PublisherID = reader["pub_id"].ToString(),
                         PublisherName = reader["pub_name"] == DBNull.Value ? null : reader["pub_name"].ToString(),
@@ -117,46 +119,28 @@ namespace GroupProject
         // Method to validate user input before database operations.
         private bool isValidInput()
         {
-            // Read and trim inputs
-            string titleIdText = txtTitleID?.Text?.Trim() ?? string.Empty;
-            string title = txtTitle?.Text?.Trim() ?? string.Empty;
-            string priceText = txtPrice?.Text?.Trim() ?? string.Empty;
+            // Call the TitleValidator to validate inputs
+            var (isValid, message) = Validator.ValidateTitleInput(txtTitleID.Text,txtTitle.Text,txtPrice.Text);
 
-            // Validate TitleID (required)
-            if (string.IsNullOrEmpty(titleIdText))
+            // If validation fails, show message and set focus
+            if (!isValid)
             {
-                MessageBox.Show("Title ID is required.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtTitleID?.Focus();
+                // Show validation message
+                MessageBox.Show(message, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // set focus to appropriate field
+                if (message.Contains("Title ID"))
+                    txtTitleID?.Focus();
+                else if (message.Contains("Title is required"))
+                    txtTitle?.Focus();
+                else if (message.Contains("Price"))
+                    txtPrice?.Focus();
+
+                // Return false indicating invalid input
                 return false;
             }
 
-            // Validate Title (required)
-            if (string.IsNullOrWhiteSpace(title))
-            {
-                MessageBox.Show("Title is required.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtTitle?.Focus();
-                return false;
-            }
-
-            // Checks that the price is not a negative number
-            if (!string.IsNullOrEmpty(priceText))
-            {
-                if (!decimal.TryParse(priceText, NumberStyles.Number | NumberStyles.AllowCurrencySymbol, CultureInfo.CurrentCulture, out decimal price))
-                {
-                    MessageBox.Show("Price must be a valid number (e.g. 12.99).", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtPrice?.Focus();
-                    return false;
-                }
-
-                if (price < 0m)
-                {
-                    MessageBox.Show("Price cannot be negative.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtPrice?.Focus();
-                    return false;
-                }
-            }
-
-            // Return if all validations are passed.
+            // Return true indicating valid input
             return true;
         }
 
